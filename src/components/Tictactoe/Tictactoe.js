@@ -30,33 +30,62 @@ export default class Tictactoe extends React.Component {
         status: prevState.status        
       }
     })
-    this.checkCondition()
+    // if (this.state.status[box] === mark)
+    setTimeout(() => {
+      this.checkCondition()
+    }, 500)
   }
 
-  checkCondition(){
-    const cond1 = this.state.a1 === this.state.a2 === this.state.a3
-    const cond2 = this.state.b1 === this.state.b2 === this.state.b3
-    const cond3 = this.state.c1 === this.state.c2 === this.state.c3
-    
-    const cond4 = this.state.a1 === this.state.b1 === this.state.c1    
-    const cond5 = this.state.a2 === this.state.b2 === this.state.c2    
-    const cond6 = this.state.a3 === this.state.b3 === this.state.c3    
+  checkCondition = () => {
+    let status = this.state.status;
 
-    const cond7 = this.state.a1 === this.state.b2 === this.state.c3    
-    const cond8 = this.state.a3 === this.state.b2 === this.state.c1
+    const cond1a = Object.is(status.a1, status.a2) && Object.is(status.a1, status.a3) && Object.is(status.a1, "X")
+    const cond2a = Object.is(status.b1, status.b2) && Object.is(status.b1, status.b3) && Object.is(status.b1, "X") 
+    const cond3a = Object.is(status.c1, status.c2) && Object.is(status.c1, status.c3) && Object.is(status.c1, "X") 
     
+    const cond4a = Object.is(status.a1, status.b1) && Object.is(status.a1, status.c1) && Object.is(status.a1, "X")     
+    const cond5a = Object.is(status.a2, status.b2) && Object.is(status.a2, status.c2) && Object.is(status.a2, "X") 
+    const cond6a = Object.is(status.a3, status.b3) && Object.is(status.a3, status.c3) && Object.is(status.a3, "X") 
+
+    const cond7a = Object.is(status.a1, status.b2) && Object.is(status.a1, status.c3) && Object.is(status.a1, "O") 
+    const cond8a = Object.is(status.a3, status.b2) && Object.is(status.a3, status.c1) && Object.is(status.a3, "O") 
+    
+    const cond1b = Object.is(status.a1, status.a2) && Object.is(status.a1, status.a3) && Object.is(status.a1, "O")
+    const cond2b = Object.is(status.b1, status.b2) && Object.is(status.b1, status.b3) && Object.is(status.b1, "O") 
+    const cond3b = Object.is(status.c1, status.c2) && Object.is(status.c1, status.c3) && Object.is(status.c1, "O") 
+    
+    const cond4b = Object.is(status.a1, status.b1) && Object.is(status.a1, status.c1) && Object.is(status.a1, "O")     
+    const cond5b = Object.is(status.a2, status.b2) && Object.is(status.a2, status.c2) && Object.is(status.a2, "O") 
+    const cond6b = Object.is(status.a3, status.b3) && Object.is(status.a3, status.c3) && Object.is(status.a3, "O") 
+
+    const cond7b = Object.is(status.a1, status.b2) && Object.is(status.a1, status.c3) && Object.is(status.a1, "O") 
+    const cond8b = Object.is(status.a3, status.b2) && Object.is(status.a3, status.c1) && Object.is(status.a3, "O") 
+    
+    const isPlayerOneWin = cond1a || cond2a || cond3a || cond4a || cond5a || cond6a || cond7a || cond8a;
+    const isPlayerTwoWin = cond1b || cond2b || cond3b || cond4b || cond5b || cond6b || cond7b || cond8b;
+
     if (this.state.turn === 8) {
       console.log("Tie!")
-      this.setState(prevState => {
-        for (var key in prevState.status) {
-          prevState.status[key] = ""
-        }
-        return {
-          turn: 0,
-          status: prevState.status        
-        }
-      })
+      this.resetAll()
+    } else if (isPlayerOneWin) {
+      console.log("Player one winner")
+      this.resetAll()
+    } else if (isPlayerTwoWin) {
+      console.log("Player two winner")
+      this.resetAll()
     }
+  }
+
+  resetAll = () => {
+    this.setState(prevState => {
+      for (var key in prevState.status) {
+        prevState.status[key] = undefined
+      }
+      return {
+        turn: 0,
+        status: prevState.status        
+      }
+    })
   }
 
   render(){
