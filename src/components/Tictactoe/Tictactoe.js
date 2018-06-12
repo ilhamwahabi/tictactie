@@ -50,8 +50,8 @@ export default class Tictactoe extends React.Component {
     const cond5a = Object.is(status.a2, status.b2) && Object.is(status.a2, status.c2) && Object.is(status.a2, "X") 
     const cond6a = Object.is(status.a3, status.b3) && Object.is(status.a3, status.c3) && Object.is(status.a3, "X") 
 
-    const cond7a = Object.is(status.a1, status.b2) && Object.is(status.a1, status.c3) && Object.is(status.a1, "O") 
-    const cond8a = Object.is(status.a3, status.b2) && Object.is(status.a3, status.c1) && Object.is(status.a3, "O") 
+    const cond7a = Object.is(status.a1, status.b2) && Object.is(status.a1, status.c3) && Object.is(status.a1, "X") 
+    const cond8a = Object.is(status.a3, status.b2) && Object.is(status.a3, status.c1) && Object.is(status.a3, "X") 
     
     const cond1b = Object.is(status.a1, status.a2) && Object.is(status.a1, status.a3) && Object.is(status.a1, "O")
     const cond2b = Object.is(status.b1, status.b2) && Object.is(status.b1, status.b3) && Object.is(status.b1, "O") 
@@ -67,14 +67,17 @@ export default class Tictactoe extends React.Component {
     const isPlayerOneWin = cond1a || cond2a || cond3a || cond4a || cond5a || cond6a || cond7a || cond8a;
     const isPlayerTwoWin = cond1b || cond2b || cond3b || cond4b || cond5b || cond6b || cond7b || cond8b;
 
-    if (this.state.turn === 8) {
-      console.log("Tie!")
-      this.resetAll()
-    } else if (isPlayerOneWin) {
+    console.log(status.a1)
+    console.log(status.b2)
+    console.log(status.c3)
+    if (isPlayerOneWin) {
       console.log("Player one winner")
       this.resetAll()
     } else if (isPlayerTwoWin) {
       console.log("Player two winner")
+      this.resetAll()
+    } else if (this.state.turn === 9) {
+      console.log("Tie!")
       this.resetAll()
     }
   }
