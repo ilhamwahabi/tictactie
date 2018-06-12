@@ -23,17 +23,20 @@ export default class Tictactoe extends React.Component {
     if (this.state.turn % 2 === 0) {
       mark = "X"
     }
-    this.setState(prevState => {
-      prevState.status[box] = mark      
-      return {
-        turn: prevState.turn + 1,
-        status: prevState.status        
-      }
-    })
-    // if (this.state.status[box] === mark)
+
+    if (!this.state.status[box]) {
+      this.setState(prevState => {
+        prevState.status[box] = mark      
+        return {
+          turn: prevState.turn + 1,
+          status: prevState.status        
+        }
+      })
+    }
+    
     setTimeout(() => {
       this.checkCondition()
-    }, 500)
+    }, 100)
   }
 
   checkCondition = () => {
