@@ -20,7 +20,7 @@ export default class Tictactoe extends React.Component {
 
   onSelectBox = (box) => {
     let mark = "O"
-    if (this.state.turn % 2 == 0) {
+    if (this.state.turn % 2 === 0) {
       mark = "X"
     }
     this.setState(prevState => {
@@ -30,13 +30,33 @@ export default class Tictactoe extends React.Component {
         status: prevState.status        
       }
     })
-    console.log(this.state.turn)
-    // this.setState(prevState => {
-    //   prevState.status[box] = mark
-    //   return {
-    //     status: prevState.status 
-    //   }
-    // })
+    this.checkCondition()
+  }
+
+  checkCondition(){
+    const cond1 = this.state.a1 === this.state.a2 === this.state.a3
+    const cond2 = this.state.b1 === this.state.b2 === this.state.b3
+    const cond3 = this.state.c1 === this.state.c2 === this.state.c3
+    
+    const cond4 = this.state.a1 === this.state.b1 === this.state.c1    
+    const cond5 = this.state.a2 === this.state.b2 === this.state.c2    
+    const cond6 = this.state.a3 === this.state.b3 === this.state.c3    
+
+    const cond7 = this.state.a1 === this.state.b2 === this.state.c3    
+    const cond8 = this.state.a3 === this.state.b2 === this.state.c1
+    
+    if (this.state.turn === 8) {
+      console.log("Tie!")
+      this.setState(prevState => {
+        for (var key in prevState.status) {
+          prevState.status[key] = ""
+        }
+        return {
+          turn: 0,
+          status: prevState.status        
+        }
+      })
+    }
   }
 
   render(){
