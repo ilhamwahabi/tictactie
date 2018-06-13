@@ -5,7 +5,7 @@ import './Tictactoe.css'
 export default class Tictactoe extends React.Component {
   state = {
     turn: 0,
-    winner: 2,
+    winner: undefined,
     status: {
       "a1": undefined,
       "a2": undefined,
@@ -25,7 +25,7 @@ export default class Tictactoe extends React.Component {
       mark = "X"
     }
 
-    if (!this.state.status[box]) {
+    if (!this.state.status[box] && !this.state.winner) {
       this.setState(prevState => {
         prevState.status[box] = mark      
         return {
