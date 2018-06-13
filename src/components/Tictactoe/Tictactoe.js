@@ -5,6 +5,7 @@ import './Tictactoe.css'
 export default class Tictactoe extends React.Component {
   state = {
     turn: 0,
+    winner: undefined,
     status: {
       "a1": undefined,
       "a2": undefined,
@@ -67,15 +68,12 @@ export default class Tictactoe extends React.Component {
     const isPlayerOneWin = cond1a || cond2a || cond3a || cond4a || cond5a || cond6a || cond7a || cond8a;
     const isPlayerTwoWin = cond1b || cond2b || cond3b || cond4b || cond5b || cond6b || cond7b || cond8b;
 
-    console.log(status.a1)
-    console.log(status.b2)
-    console.log(status.c3)
     if (isPlayerOneWin) {
       console.log("Player one winner")
-      this.resetAll()
+      this.setState({ winner: 1 })
     } else if (isPlayerTwoWin) {
       console.log("Player two winner")
-      this.resetAll()
+      this.setState({ winner: 2 })      
     } else if (this.state.turn === 9) {
       console.log("Tie!")
       this.resetAll()
@@ -89,6 +87,7 @@ export default class Tictactoe extends React.Component {
       }
       return {
         turn: 0,
+        winner: undefined,
         status: prevState.status        
       }
     })
@@ -97,6 +96,12 @@ export default class Tictactoe extends React.Component {
   render(){
     return (
       <section className="ttt">
+        { this.state.winner === 1 ? 
+          <div className="playerOne">
+          <h3>Player One</h3>
+          <h1>WIN</h1>
+          <button onClick={() => this.resetAll()}>Play Again</button>
+        </div> : null }
         <div className="box-section">
           <div className="box box1" onClick={() => this.onSelectBox("a1")}><div>{ this.state.status.a1 }</div></div>
           <div className="box box2" onClick={() => this.onSelectBox("a2")}><div>{ this.state.status.a2 }</div></div>
@@ -108,6 +113,12 @@ export default class Tictactoe extends React.Component {
           <div className="box box8" onClick={() => this.onSelectBox("c2")}><div>{ this.state.status.c2 }</div></div>
           <div className="box box9" onClick={() => this.onSelectBox("c3")}><div>{ this.state.status.c3 }</div></div>
         </div>        
+        { this.state.winner === 2 ? 
+          <div className="playerTwo">
+          <h3>Player Two</h3>
+          <h1>WIN</h1>
+          <button onClick={() => this.resetAll()}>Play Again</button>
+        </div> : null }
       </section>
     )
   }
