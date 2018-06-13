@@ -5,7 +5,7 @@ import './Tictactoe.css'
 export default class Tictactoe extends React.Component {
   state = {
     turn: 0,
-    winner: undefined,
+    winner: 2,
     status: {
       "a1": undefined,
       "a2": undefined,
@@ -97,10 +97,10 @@ export default class Tictactoe extends React.Component {
     return (
       <section className="ttt">
         { this.state.winner === 1 ? 
-          <div className="playerOne">
-          <h3>Player One</h3>
-          <h1>WIN</h1>
-          <button onClick={() => this.resetAll()}>Play Again</button>
+          <div className="player playerOne">
+          <h3 className="player__name">Player One</h3>
+          <h1 className="player__msg">WIN</h1>
+          <button onClick={() => this.resetAll()} className="player__btn">Play Again</button>
         </div> : null }
         <div className="box-section">
           <div className="box box1" onClick={() => this.onSelectBox("a1")}><div>{ this.state.status.a1 }</div></div>
@@ -114,10 +114,10 @@ export default class Tictactoe extends React.Component {
           <div className="box box9" onClick={() => this.onSelectBox("c3")}><div>{ this.state.status.c3 }</div></div>
         </div>        
         { this.state.winner === 2 ? 
-          <div className="playerTwo">
-          <h3>Player Two</h3>
-          <h1>WIN</h1>
-          <button onClick={() => this.resetAll()}>Play Again</button>
+          <div className="player playerTwo">
+          <h3 className="player__name">Player Two</h3>
+          <h1 className="player__msg">WIN</h1>
+          <button onClick={() => this.resetAll()} className="player__btn">Play Again</button>
         </div> : null }
       </section>
     )
