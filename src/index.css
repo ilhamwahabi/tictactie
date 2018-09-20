@@ -4,3 +4,9 @@
   box-sizing: border-box;
   font-family: 'Raleway', sans-serif;
 }
+
+.home {
+  height: 100vh;
+  width: 100vw;
+  background-color: #044D6E;
+}

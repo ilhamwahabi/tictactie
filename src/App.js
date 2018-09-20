@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-import Home from './views/Home/Home'
+import Tictactoe from './components/Tictactoe/Tictactoe'
 
-class App extends Component {
-  render() {
+export default class Home extends React.Component {
+  render(){
     return (
-      <div className="App">
-        <Home />
-      </div>
-    );
+      <main className="home">
+        <Tictactoe />
+      </main>
+    )
   }
 }
-
-export default App;
