@@ -3,12 +3,30 @@
   width: 100vw;
   color: white;
   text-align: center;
+  position: relative;
 
   background-color: #1F3A93;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.ttt {
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 3.5px;
+
+  position: absolute;
+  width: 501px;
+  height: 501px;
+}
+
+.box {
+  width: 160px;
+  height: 160px;
+  cursor: pointer;
 }
 
 svg {
@@ -23,16 +41,31 @@ svg {
 
 line {
   stroke: white;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 1.25s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 
-ellipse {
+circle {
   stroke: #F62459;
   stroke-width: 12.5;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 
 path {
   stroke: #36DBD7;
-  stroke-width: 12.5
+  stroke-width: 12.5;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 
 @media (max-width: 525px) {
