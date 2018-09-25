@@ -1,18 +1,8 @@
 import React, { Component, Fragment } from 'react'
 
-import './Tictactoe.css'
+import  './css/Board.css'
 
-export default class Tictactoe extends Component {
-  state = {
-    turn: 1,
-    score: {
-      1: 0, 2: 0,
-    },
-    box: {
-      1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null, 9: null,
-    }
-  }
-
+class Board extends Component { 
   checkColumn = (loc) => {
     switch (loc % 3) {
       case (1): return 1;
@@ -76,7 +66,7 @@ export default class Tictactoe extends Component {
   }
 
   checkWinner = (loc, box) => {
-    const score = { ...this.state.score }
+    const score = { ...this.props.score }
 
     const mostTopBox = this.mostTopBox(loc)
     const mostLeftBox = this.mostLeftBox(loc)
@@ -141,28 +131,24 @@ export default class Tictactoe extends Component {
   }
 
   onBoxClick = (i) => {
-    if (this.state.box[i]) return
+    if (this.props.box[i]) return
 
-    this.setState(state => ({ turn: state.turn + 1 }));
+    this.props.addTurn();
 
-    const box = { ...this.state.box }
+    const box = { ...this.props.box }
 
-    switch(this.state.turn % 2) {
+    switch(this.props.turn % 2) {
       case (0): box[i] = this.putCircle(i); break;
       case (1): box[i] = this.putCross(i); break;
       default: break;
     }
 
-    this.setState({ box })
+    this.props.updateBox(box)
 
     const result = this.checkWinner(i, box);
 
-    if (this.state.turn === 9 || result.isFinish) {
-      setTimeout(() => {
-        this.setState({ turn: 1, score: result.score, box: {
-          1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null, 9: null, 
-        }})
-      }, 500)
+    if (this.props.turn === 9 || result.isFinish) {
+      setTimeout(() => { this.props.resetGame(result.score) }, 1000)
     }
   }
 
@@ -182,12 +168,12 @@ export default class Tictactoe extends Component {
   ])
 
   renderMark = () => ( 
-    Object.keys(this.state.box).map((el, i) => <Fragment key={i}>{ this.state.box[el] }</Fragment>)
+    Object.keys(this.props.box).map((el, i) => <Fragment key={i}>{ this.props.box[el] }</Fragment>)
   )
 
-  render(){
+  render() {
     return (
-      <section className="game">
+      <Fragment>
         <svg>
           { this.renderSvgLine() }
           { this.renderMark() }          
@@ -195,7 +181,9 @@ export default class Tictactoe extends Component {
         <div className="boxes">
           { this.renderBox() }
         </div>
-      </section>
+      </Fragment>
     )
   }
 }
+
+export default Board

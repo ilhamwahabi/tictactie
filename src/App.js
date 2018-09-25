@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Tictactoe from './components/Tictactoe/Tictactoe'
+import Tictactoe from './components/Tictactoe'
 
 const Home = () => (
   <main className="home">
