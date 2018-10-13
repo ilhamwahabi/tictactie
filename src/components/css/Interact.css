@@ -1,0 +1,34 @@
+.settings-button, .about-button {
+  width: 125px;
+  height: 125px;
+  position: fixed;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.settings-button {
+  background-color: #F62459;
+  border-top-right-radius: 125px;
+  left: 0;
+}
+
+.about-button {
+  background-color: #36DBD7;
+  border-top-left-radius: 125px;
+  right: 0;
+}
+
+.settings-button .button-icon {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+}
+
+.about-button .button-icon {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+}
+
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
