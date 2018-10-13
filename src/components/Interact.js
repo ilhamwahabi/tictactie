@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import swal from 'sweetalert2'
+import ReactTooltip from 'react-tooltip'
 
 import './css/Interact.css'
 
@@ -20,15 +21,32 @@ class Interact extends Component {
     })
   }
 
+  openSettingsSwal = () => {
+    swal({
+      html: `
+      
+      `,
+      confirmButtonText: 'Save',
+      showCancelButton: true,
+      cancelButtonText: 'Cancel'
+    })
+  }
+
   render() {
     return (
       <Fragment>
-        <div className="settings-button">
-          <i className="material-icons md-48 button-icon">settings</i>
-        </div>      
-        <div className="about-button" onClick={this.openAboutSwal}>
-          <i className="material-icons md-48 button-icon">face</i>
-        </div>      
+
+        <div data-tip data-for='settings' className="settings-button" onClick={this.openSettingsSwal}>
+          <ion-icon name="settings" class="md-48 button-icon"></ion-icon>
+        </div>
+        
+        <div data-tip data-for='about' className="about-button" onClick={this.openAboutSwal}>
+          <ion-icon name="happy" class="md-48 button-icon"></ion-icon>
+        </div>
+
+        <ReactTooltip id='settings' place="right" type='dark' effect="solid">Settings</ReactTooltip>
+        <ReactTooltip id='about' place="left" type='dark' effect="solid">About</ReactTooltip>
+
       </Fragment>
     )
   }

@@ -22,16 +22,17 @@
   position: fixed;
   bottom: 25px;
   left: 25px;
+  font-size: 48px;
 }
 
 .about-button .button-icon {
   position: fixed;
   bottom: 25px;
   right: 25px;
+  font-size: 48px;
 }
 
-.material-icons.md-36 { font-size: 36px; }
-.material-icons.md-48 { font-size: 48px; }
+/* SWEET ALERT */
 
 .see-github {
   text-decoration: none;
