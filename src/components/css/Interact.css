@@ -40,3 +40,28 @@
   font-weight: 600;
   display: flex;
 }
+
+/* OPTIONS */
+.options-items {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.options-items:first-child {
+  margin-top: 25px;
+}
+
+.options-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.options-item ion-icon {
+  margin-bottom: 10px;
+  font-size: 48px;
+}

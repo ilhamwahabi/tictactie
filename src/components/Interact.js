@@ -14,7 +14,7 @@ class Interact extends Component {
       text: 'Copyright 2018 Ilham Wahabi',
       confirmButtonText: 'Cool',
       footer: `
-        <a class="see-github" href="https://github.com/IlhamWahabiGX/tictac-boom">
+        <a class="see-github" href="https://github.com/IlhamWahabiGX/tictac-boom" target="_blank">
           See this project on &nbsp;<ion-icon name="logo-github"></ion-icon>
         </a>
       `
@@ -23,8 +23,38 @@ class Interact extends Component {
 
   openSettingsSwal = () => {
     swal({
+      title: 'Game Settings',
       html: `
-      
+        <div class="options-items">
+          <div class="options-item">
+            <ion-icon name="contacts"></ion-icon>
+            v.s Friend
+          </div>
+          <div class="options-item">
+            <ion-icon name="desktop"></ion-icon>
+            v.s Computer
+          </div>
+        </div>
+        <div class="options-items">
+          <div class="options-item">
+            <ion-icon name="close"></ion-icon>
+            Cross
+          </div>
+          <div class="options-item">
+            <ion-icon name="radio-button-off"></ion-icon>
+            Circle
+          </div>
+        </div>
+        <div class="options-items">
+          <div class="options-item">
+            <ion-icon name="sunny"></ion-icon>
+            Light
+          </div>
+          <div class="options-item">
+            <ion-icon name="moon"></ion-icon>
+            Dark
+          </div>
+        </div>
       `,
       confirmButtonText: 'Save',
       showCancelButton: true,
