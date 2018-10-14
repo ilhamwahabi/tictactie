@@ -27,9 +27,9 @@ export default class Tictactoe extends Component {
   render(){
     return (
       <section className="game">
-        <Score />
+        <Score {...this.state.score} />
         <Board {...this.state} addTurn={this.addTurn} updateBox={this.updateBox} resetGame={this.resetGame} />
-        <Interact />
+        <Interact {...this.state.settings} />
       </section>
     )
   }

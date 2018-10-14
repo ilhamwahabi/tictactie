@@ -1,0 +1,32 @@
+.score-board {
+  position: fixed;
+  top: 0;
+  width: 200px;
+  height: 100px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.score-board ion-icon {
+  font-size: 72px;
+}
+
+.score-board p {
+  font-size: 60px;
+}
+
+.left-score {
+  justify-content: flex-start;
+  background-color: #36DBD7;
+  left: 0;
+  border-bottom-right-radius: 100px;
+}
+
+.right-score {
+  justify-content: flex-end;
+  background-color: #F62459;
+  right: 0;
+  border-bottom-left-radius: 100px;
+}

@@ -90,7 +90,7 @@ class Board extends Component {
       }
       return { isFinish: true, score }
     }
-    return { isFinish: false }
+    return { isFinish: false, score }
   }
 
   locateHorizontal = (isCircle, loc, spot) => {
@@ -148,7 +148,9 @@ class Board extends Component {
     const result = this.checkWinner(i, box);
 
     if (this.props.turn === 9 || result.isFinish) {
-      setTimeout(() => { this.props.resetGame(result.score) }, 1000)
+      // setTimeout(() => { 
+        this.props.resetGame(result.score) 
+      // }, 1000)
     }
   }
 
