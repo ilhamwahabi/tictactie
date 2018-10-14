@@ -148,9 +148,9 @@ class Board extends Component {
     const result = this.checkWinner(i, box);
 
     if (this.props.turn === 9 || result.isFinish) {
-      // setTimeout(() => { 
+      setTimeout(() => { 
         this.props.resetGame(result.score) 
-      // }, 1000)
+      }, 1000)
     }
   }
 

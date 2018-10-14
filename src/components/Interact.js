@@ -22,61 +22,61 @@ class Interact extends Component {
   }
 
   openSettingsSwal = () => {
+    const newSettings = { ...this.props }
+    const { mode, player, theme } = newSettings;
+
+    const changeSettings = ({ type, newValue }) => {
+      newSettings = { ...newSettings, [type]: newValue }
+    }
+
     swal({
       title: 'Game Settings',
       html: `
         <div class="options-items">
-          <div class="options-item">
-            <ion-icon name="contacts"></ion-icon>
-            v.s Friend
+          <div class="options-item ${mode === 'friend' && 'active'}">
+            <ion-icon name="contacts"></ion-icon> Friend
           </div>
-          <div class="options-item">
-            <ion-icon name="desktop"></ion-icon>
-            v.s Computer
+          <div class="options-item ${mode === 'computer' && 'active'}">
+            <ion-icon name="desktop"></ion-icon> AI
           </div>
         </div>
         <div class="options-items">
-          <div class="options-item">
-            <ion-icon name="close"></ion-icon>
-            Cross
+          <div class="options-item ${player === 'cross' && 'active'}">
+            <ion-icon name="close"></ion-icon> Cross
           </div>
-          <div class="options-item">
-            <ion-icon name="radio-button-off"></ion-icon>
-            Circle
+          <div class="options-item ${mode === 'circle' && 'active'}">
+            <ion-icon name="radio-button-off"></ion-icon> Circle
           </div>
         </div>
         <div class="options-items">
-          <div class="options-item">
-            <ion-icon name="sunny"></ion-icon>
-            Light
+          <div class="options-item ${theme === 'light' && 'active'}">
+            <ion-icon name="sunny"></ion-icon> Light
           </div>
-          <div class="options-item">
-            <ion-icon name="moon"></ion-icon>
-            Dark
+          <div class="options-item ${theme === 'dark' && 'active'}">
+            <ion-icon name="moon"></ion-icon> Dark
           </div>
         </div>
       `,
       confirmButtonText: 'Save',
       showCancelButton: true,
       cancelButtonText: 'Cancel'
+    }).then((result) => {
+      this.props.changeSettings(newSettings)
     })
   }
 
   render() {
     return (
       <Fragment>
-
         <div data-tip data-for='settings' className="settings-button" onClick={this.openSettingsSwal}>
           <ion-icon name="settings" class="md-48 button-icon"></ion-icon>
         </div>
-        
         <div data-tip data-for='about' className="about-button" onClick={this.openAboutSwal}>
           <ion-icon name="happy" class="md-48 button-icon"></ion-icon>
         </div>
 
         <ReactTooltip id='settings' place="right" type='dark' effect="solid">Settings</ReactTooltip>
         <ReactTooltip id='about' place="left" type='dark' effect="solid">About</ReactTooltip>
-
       </Fragment>
     )
   }

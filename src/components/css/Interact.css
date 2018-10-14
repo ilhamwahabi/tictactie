@@ -65,3 +65,12 @@
   margin-bottom: 10px;
   font-size: 48px;
 }
+
+.active {
+  background-color: #2B77C0;
+  border-radius: 15px;
+  width: 100px;
+  height: 100px;
+  padding: 10px;
+  color: white;
+}
