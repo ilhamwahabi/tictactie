@@ -29,7 +29,7 @@ export default class Tictactoe extends Component {
           <section className={`game ${settings.theme}`}>
             <Score {...this.state.score} />
             <Board {...this.state} addTurn={this.addTurn} updateBox={this.updateBox} resetGame={this.resetGame} />
-            <Interact {...this.state.settings} changeSettings={this.changeSettings} />
+            <Interact {...settings} />
           </section>
         )}
       </Consumer>

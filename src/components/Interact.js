@@ -22,12 +22,7 @@ class Interact extends Component {
   }
 
   openSettingsSwal = () => {
-    const newSettings = { ...this.props }
-    const { mode, player, theme } = newSettings;
-
-    const changeSettings = ({ type, newValue }) => {
-      newSettings = { ...newSettings, [type]: newValue }
-    }
+    const { mode, player, theme, changeSettings } = this.props;
 
     swal({
       title: 'Game Settings',
@@ -61,7 +56,7 @@ class Interact extends Component {
       showCancelButton: true,
       cancelButtonText: 'Cancel'
     }).then((result) => {
-      this.props.changeSettings(newSettings)
+      changeSettings('theme')
     })
   }
 

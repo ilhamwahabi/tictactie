@@ -1,14 +1,14 @@
 import React from 'react'
 
-import { Provider, settings } from './context/settings-context'
+import ThemeContext from './context/settings-context'
 import Tictactoe from './components/Tictactoe'
 
 
 const Home = () => (
   <main className="home">
-    <Provider value={settings}>
+    <ThemeContext>
       <Tictactoe />
-    </Provider>
+    </ThemeContext>
   </main>
 )
 
