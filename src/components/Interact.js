@@ -38,28 +38,42 @@ class Interact extends Component {
   }
 
   openSettingsSwal = () => {
-    let { mode, player, theme, changeSettings } = this.props;
+    let { mode, player, theme } = this.props;
 
     MySwal.fire({
       title: 'Game Settings',
       html: (
         <Fragment>
-          <div className="options-items">
-            <div onClick={() => mode = 'human'} className={`options-item ${mode === 'human' && 'active'}`}>
+          <div className="options-items" ref={this.mode}>
+            <div
+              onClick={() => this.toggleActiveClass('mode')}
+              className={`options-item ${mode === 'human' ? 'active' : ''}`}
+            >
               <ion-icon name="contacts"></ion-icon> Human
             </div>
-            <div onClick={() => mode = 'ai'} className={`options-item ${mode === 'ai' && 'active'}`}>
+            <div
+              onClick={() => this.toggleActiveClass('mode')}
+              className={`options-item ${mode === 'ai' ? 'active' : ''}`}
+            >
               <ion-icon name="desktop"></ion-icon> AI
             </div>
           </div>
-          <div className="options-items">
-            <div onClick={() => player = 'cross'} className={`options-item ${player === 'cross' && 'active'}`}>
+          
+          <div className="options-items" ref={this.player}>
+            <div
+              onClick={() => this.toggleActiveClass('player')} 
+              className={`options-item ${player === 'cross' ? 'active' : ''}`}
+            >
               <ion-icon name="close"></ion-icon> Cross
             </div>
-            <div onClick={() => player = 'circle'} className={`options-item ${player === 'circle' && 'active'}`}>
+            <div 
+              onClick={() => this.toggleActiveClass('player')}
+              className={`options-item ${player === 'circle' ? 'active' : ''}`}
+            >
               <ion-icon name="radio-button-off"></ion-icon> Circle
             </div>
           </div>
+
           <div className="options-items" ref={this.theme}>
             <div 
               onClick={() => this.toggleActiveClass('theme')} 
