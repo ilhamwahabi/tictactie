@@ -16,10 +16,10 @@ class ThemeContext extends Component {
         newValue = this.state.theme === 'light' ? 'dark' : 'light'
         break;
       case 'mode':
-        newValue = this.state.theme === 'human' ? 'ai' : 'human'
+        newValue = this.state.mode === 'human' ? 'ai' : 'human'
         break;
       case 'player':
-        newValue = this.state.theme === 'cross' ? 'circle' : 'cross'
+        newValue = this.state.player === 'cross' ? 'circle' : 'cross'
         break;
       default: break;
     }
