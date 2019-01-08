@@ -33,10 +33,10 @@ class Interact extends Component {
       title: 'Game Settings',
       html: `
         <div class="options-items">
-          <div class="options-item ${mode === 'friend' && 'active'}">
-            <ion-icon name="contacts"></ion-icon> Friend
+          <div class="options-item ${mode === 'human' && 'active'}">
+            <ion-icon name="contacts"></ion-icon> Human
           </div>
-          <div class="options-item ${mode === 'computer' && 'active'}">
+          <div class="options-item ${mode === 'ai' && 'active'}">
             <ion-icon name="desktop"></ion-icon> AI
           </div>
         </div>

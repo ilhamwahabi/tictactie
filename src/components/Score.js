@@ -7,12 +7,10 @@ class Score extends Component {
     return (
       <Fragment>
         <div className="score-board left-score">
-          <ion-icon name="close"></ion-icon>
-          <p>: { this.props[1] }</p>
+          <p>{ this.props[1] }</p>
         </div>
         <div className="score-board right-score">
-          <p>{ this.props[2] } :</p>
-          <ion-icon name="radio-button-off"></ion-icon>
+          <p>{ this.props[2] }</p>
         </div>
       </Fragment>
     )
