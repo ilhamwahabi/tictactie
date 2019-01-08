@@ -1,10 +1,14 @@
 import React from 'react'
 
+import { ThemeContext } from './context/theme-context'
 import Tictactoe from './components/Tictactoe'
+
 
 const Home = () => (
   <main className="home">
-    <Tictactoe />
+    <ThemeContext.Provider value="light">
+      <Tictactoe />    
+    </ThemeContext.Provider>
   </main>
 )
 

@@ -4,6 +4,8 @@ import Score from './Score'
 import Board from './Board'
 import Interact from './Interact'
 
+import { ThemeContext } from '../context/theme-context'
+
 import './css/Tictactoe.css'
 
 export default class Tictactoe extends Component {
@@ -27,11 +29,15 @@ export default class Tictactoe extends Component {
 
   render(){
     return (
-      <section className="game">
-        <Score {...this.state.score} />
-        <Board {...this.state} addTurn={this.addTurn} updateBox={this.updateBox} resetGame={this.resetGame} />
-        <Interact {...this.state.settings} changeSettings={this.changeSettings} />
-      </section>
+      <ThemeContext.Consumer>
+        {(theme) => (
+          <section className={`game ${theme}`}>
+            <Score {...this.state.score} />
+            <Board {...this.state} addTurn={this.addTurn} updateBox={this.updateBox} resetGame={this.resetGame} />
+            <Interact {...this.state.settings} changeSettings={this.changeSettings} />
+          </section>
+        )}
+      </ThemeContext.Consumer>
     )
   }
 }
