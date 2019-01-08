@@ -1,13 +1,13 @@
 {
-  "main.css": "/tictac-boom/static/css/main.04bed974.chunk.css",
-  "main.js": "/tictac-boom/static/js/main.542825ed.chunk.js",
-  "main.js.map": "/tictac-boom/static/js/main.542825ed.chunk.js.map",
-  "static/js/1.73eb3620.chunk.js": "/tictac-boom/static/js/1.73eb3620.chunk.js",
-  "static/js/1.73eb3620.chunk.js.map": "/tictac-boom/static/js/1.73eb3620.chunk.js.map",
+  "main.css": "/tictac-boom/static/css/main.90492663.chunk.css",
+  "main.js": "/tictac-boom/static/js/main.3a700db5.chunk.js",
+  "main.js.map": "/tictac-boom/static/js/main.3a700db5.chunk.js.map",
+  "static/js/1.7c95683f.chunk.js": "/tictac-boom/static/js/1.7c95683f.chunk.js",
+  "static/js/1.7c95683f.chunk.js.map": "/tictac-boom/static/js/1.7c95683f.chunk.js.map",
   "runtime~main.js": "/tictac-boom/static/js/runtime~main.229744d5.js",
   "runtime~main.js.map": "/tictac-boom/static/js/runtime~main.229744d5.js.map",
-  "static/css/main.04bed974.chunk.css.map": "/tictac-boom/static/css/main.04bed974.chunk.css.map",
+  "static/css/main.90492663.chunk.css.map": "/tictac-boom/static/css/main.90492663.chunk.css.map",
   "index.html": "/tictac-boom/index.html",
-  "precache-manifest.7332789eaf04a9814d91b0af14ae7f27.js": "/tictac-boom/precache-manifest.7332789eaf04a9814d91b0af14ae7f27.js",
+  "precache-manifest.9a31a16fdf81465673180989a56c6baf.js": "/tictac-boom/precache-manifest.9a31a16fdf81465673180989a56c6baf.js",
   "service-worker.js": "/tictac-boom/service-worker.js"
 }
