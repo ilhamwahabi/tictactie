@@ -94,9 +94,7 @@ class Interact extends Component {
       showCancelButton: true,
       cancelButtonText: 'Cancel'
     })
-    .then(() => {
-      console.log({ mode, player, theme })
-    })
+    .then(() => {})
   }
 
   render() {
