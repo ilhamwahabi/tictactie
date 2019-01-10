@@ -20,7 +20,6 @@ export default class Tictactoe extends Component {
   resetGame = score => { this.setState({ turn: 1, score, box: {
       1: null, 2: null, 3: null, 4: null, 5: null, 6: null, 7: null, 8: null, 9: null, 
   }})}
-  changeSettings = (newSettings) => { this.setState({ settings: newSettings }) }
 
   render(){
     return (

@@ -9,22 +9,8 @@ class ThemeContext extends Component {
     player: 'cross',
   }
 
-  changeSettings = (type) => {
-    let newValue;
-    switch (type) {
-      case 'theme':
-        newValue = this.state.theme === 'light' ? 'dark' : 'light'
-        break;
-      case 'mode':
-        newValue = this.state.mode === 'human' ? 'ai' : 'human'
-        break;
-      case 'player':
-        newValue = this.state.player === 'cross' ? 'circle' : 'cross'
-        break;
-      default: break;
-    }
-
-    this.setState({ [type]: newValue })
+  changeSettings = (key, newValue) => {
+    this.setState({ [key] : newValue })
   }
 
   render() {
