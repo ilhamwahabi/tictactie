@@ -11,25 +11,9 @@
   left: 0;
 }
 
-.light .settings-button {
-  background-color: #F62459;
-}
-
-.dark .settings-button {
-  background-color: #00C853;
-}
-
 .about-button {
   border-top-left-radius: 125px;
   right: 0;
-}
-
-.light .about-button {
-  background-color: #36DBD7;
-}
-
-.dark .about-button {
-  background-color: #FF6D00;
 }
 
 .settings-button .button-icon {

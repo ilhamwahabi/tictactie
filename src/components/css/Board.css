@@ -39,27 +39,11 @@ circle {
   animation: dash 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 
-.light circle {
-  stroke: #F62459;
-}
-
-.dark circle {
-  stroke: #00C853;
-}
-
 path {
   stroke-width: 12.5;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
-}
-
-.light path {
-  stroke: #36DBD7;
-}
-
-.dark path {
-  stroke: #FF6D00;
 }
 
 @keyframes dash {

@@ -1,0 +1,71 @@
+:root {
+  --light-primary: #1F3A93;
+  --light-first: #36DBD7;
+  --light-second: #F62459;
+  
+  --dark-primary: #263238;
+  --dark-first: #FF6D00;
+  --dark-second: #00C853;
+}
+
+.light {
+  background-color: var(--light-primary);
+}
+
+.dark {
+  background-color: var(--dark-primary);
+}
+
+ /* SCORE */
+
+ .light .left-score {
+  background-color: var(--light-first);
+}
+
+.dark .left-score {
+  background-color: var(--dark-first);
+}
+
+.light .right-score {
+  background-color: var(--light-second);
+}
+
+.dark .right-score {
+  background-color: var(--dark-second);
+}
+
+/* PAWN */
+
+.light circle {
+  stroke: var(--light-second);
+}
+
+.dark circle {
+  stroke: var(--dark-second);
+}
+
+.light path {
+  stroke: var(--light-first);
+}
+
+.dark path {
+  stroke: var(--dark-first);
+}
+
+/* INTERACT */
+
+.light .settings-button {
+  background-color: var(--light-second);
+}
+
+.dark .settings-button {
+  background-color: var(--dark-second);
+}
+
+.light .about-button {
+  background-color: var(--light-first);
+}
+
+.dark .about-button {
+  background-color: var(--dark-first);
+}

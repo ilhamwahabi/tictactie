@@ -23,24 +23,8 @@
   left: 0;
 }
 
-.light .left-score {
-  background-color: #36DBD7;
-}
-
-.dark .left-score {
-  background-color: #FF6D00;
-}
-
 .right-score {
   justify-content: flex-end;
   border-bottom-left-radius: 50%;
   right: 0;
-}
-
-.light .right-score {
-  background-color: #F62459;
-}
-
-.dark .right-score {
-  background-color: #00C853;
 }
