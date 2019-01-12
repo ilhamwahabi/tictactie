@@ -16,14 +16,14 @@ export default class Tictactoe extends Component {
         {(settings) => (
           <section className={`game ${settings.theme}`}>
             <GameConsumer>
-              {(value) => (
+              {(game) => (
                 <>
-                  <Score {...value.score} />
-                  <Board {...value} />
+                  <Score {...game.score} />
+                  <Board {...game} player={settings.player} />
+                  <Interact {...settings} resetGame={game.resetGame} />
                 </>
               )}
             </GameConsumer>
-            <Interact {...settings} />
           </section>
         )}
       </SettingsConsumer>

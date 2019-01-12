@@ -105,8 +105,10 @@ class Interact extends Component {
       if (!value) return
 
       this.props.changeSettings('mode', settings.mode)
-      this.props.changeSettings('player', settings.player)
       this.props.changeSettings('theme', settings.theme)
+
+      if (this.props.player !== settings.player) this.props.resetGame({ 1: 0, 2: 0, })
+      this.props.changeSettings('player', settings.player)
     })
   }
 

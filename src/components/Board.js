@@ -137,9 +137,17 @@ class Board extends Component {
 
     const box = { ...this.props.box }
 
+    console.log(this.props.player)
+
     switch(this.props.turn % 2) {
-      case (0): box[i] = this.putCircle(i); break;
-      case (1): box[i] = this.putCross(i); break;
+      case (0): {
+        box[i] = this.props.player === 'cross' ? this.putCircle(i) : this.putCross(i);
+        break;
+      }
+      case (1): { 
+        box[i] = this.props.player === 'cross' ? this.putCross(i) : this.putCircle(i);
+        break; 
+      }
       default: break;
     }
 
@@ -170,7 +178,9 @@ class Board extends Component {
   ])
 
   renderMark = () => ( 
-    Object.keys(this.props.box).map((el, i) => <Fragment key={i}>{ this.props.box[el] }</Fragment>)
+    Object
+      .keys(this.props.box)
+      .map((el, i) => <Fragment key={i}>{ this.props.box[el] }</Fragment>)
   )
 
   render() {
