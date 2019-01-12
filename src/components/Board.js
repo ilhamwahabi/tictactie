@@ -94,19 +94,73 @@ class Board extends Component {
   }
 
   locateHorizontal = (isCircle, loc, spot) => {
+    const linePoint = {
+      alpha: 83, 
+      beta: 30, 
+      gama: 250, 
+      omega: 197, // ((160 x 1) + (7 x 1)) + 30
+      teta: 417,
+      delta: 364 // ((160 x 2) + (7 x 2)) + 30
+    }
+    
+    if (window.innerWidth < 768) {
+      linePoint.alpha = 60 //
+      linePoint.beta = 22.5 //
+      linePoint.gama = 185.5 //
+      linePoint.omega = 150 // 
+      linePoint.teta = 308 //
+      linePoint.delta = 271.5 // 240 + 8 + 22.5
+    } 
+    
+    if (window.innerWidth < 481) {
+      linePoint.alpha = 38.5 //
+      linePoint.beta = 15 //
+      linePoint.gama = 122.5 //
+      linePoint.omega = 96 //
+      linePoint.teta = 204.5 //
+      linePoint.delta = 179 // 160 + 4 + 15
+    }
+
     switch(this.checkRow(loc)) {
-      case (1): isCircle ? spot.y = 83 : spot.y = 30; break;
-      case (2): isCircle ? spot.y = 250 : spot.y = 197; break;
-      case (3): isCircle ? spot.y = 417 : spot.y = 364; break;
+      case (1): isCircle ? spot.y = linePoint.alpha : spot.y = linePoint.beta; break;
+      case (2): isCircle ? spot.y = linePoint.gama : spot.y = linePoint.omega; break;
+      case (3): isCircle ? spot.y = linePoint.teta : spot.y = linePoint.delta; break;
       default: break;
     }
   }
 
   locateVertical = (isCircle, loc, spot) => {
+    const linePoint = {
+      alpha: 83, 
+      beta: 30, 
+      gama: 250, 
+      omega: 197, // ((160 x 1) + (7 x 1)) + 30
+      teta: 417,
+      delta: 364 // ((160 x 2) + (7 x 2)) + 30
+    }
+    
+    if (window.innerWidth < 768) {
+      linePoint.alpha = 60 //
+      linePoint.beta = 22.5 //
+      linePoint.gama = 185.5 //
+      linePoint.omega = 150 // 
+      linePoint.teta = 308 //
+      linePoint.delta = 271.5 // 240 + 8 + 22.5
+    } 
+    
+    if (window.innerWidth < 481) {
+      linePoint.alpha = 38.5 //
+      linePoint.beta = 15 //
+      linePoint.gama = 122.5 //
+      linePoint.omega = 96 //
+      linePoint.teta = 204.5 //
+      linePoint.delta = 179 // 160 + 4 + 15
+    }
+
     switch (this.checkColumn(loc)) {
-      case (1): isCircle ? spot.x = 83 : spot.x = 30; break;
-      case (2): isCircle ? spot.x = 250 : spot.x = 197; break;
-      case (3): isCircle ? spot.x = 417 : spot.x = 364; break;
+      case (1): isCircle ? spot.x = linePoint.alpha : spot.x = linePoint.beta; break;
+      case (2): isCircle ? spot.x = linePoint.gama : spot.x = linePoint.omega; break;
+      case (3): isCircle ? spot.x = linePoint.teta : spot.x = linePoint.delta; break;
       default: break;
     }
   }
@@ -116,7 +170,11 @@ class Board extends Component {
     this.locateHorizontal(true, loc, centerSpot)
     this.locateVertical(true, loc, centerSpot)
 
-    return <circle cx={centerSpot.x} cy={centerSpot.y} r="55" />
+    let r = 55
+    if (window.innerWidth < 768) r = 41.25
+    if (window.innerWidth < 481) r = 27.5
+
+    return <circle cx={centerSpot.x} cy={centerSpot.y} r={r} />
   }
 
   putCross = (loc) => {
@@ -124,9 +182,13 @@ class Board extends Component {
     this.locateHorizontal(false, loc, topLeftSpot)
     this.locateVertical(false, loc, topLeftSpot)
 
+    let r = 107
+    if (window.innerWidth < 768) r = 70
+    if (window.innerWidth < 481) r = 50
+
     return <path d={`
-      M${topLeftSpot.x} ${topLeftSpot.y} ${topLeftSpot.x + 107} ${topLeftSpot.y + 107} 
-      M${topLeftSpot.x} ${topLeftSpot.y + 107} ${topLeftSpot.x + 107} ${topLeftSpot.y}
+      M${topLeftSpot.x} ${topLeftSpot.y} ${topLeftSpot.x + r} ${topLeftSpot.y + r} 
+      M${topLeftSpot.x} ${topLeftSpot.y + r} ${topLeftSpot.x + r} ${topLeftSpot.y}
     `} />
   }
 
