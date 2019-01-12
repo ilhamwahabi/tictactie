@@ -12,13 +12,18 @@ class GameContext extends Component {
   state = {
     turn: 1,
     score: { 1: 0, 2: 0, },
-    box: { ...defaultBox }
+    box: { ...defaultBox },
+    isFinish: false
   }
 
   addTurn = () => { 
     this.setState(state => ({ turn: state.turn + 1 })) 
   }
   
+  gameFinish = () => {
+    this.setState({ isFinish: true })
+  }
+
   updateBox = box => { 
     this.setState({ box }) 
   }
@@ -28,7 +33,8 @@ class GameContext extends Component {
       { 
         turn: 1, 
         score, 
-        box: { ...defaultBox }
+        box: { ...defaultBox },
+        isFinish: false
       }
     )
   }
@@ -39,7 +45,8 @@ class GameContext extends Component {
           ...this.state, 
           addTurn: this.addTurn, 
           updateBox: this.updateBox, 
-          resetGame: this.resetGame 
+          resetGame: this.resetGame,
+          gameFinish: this.gameFinish,
         }}
       >
         { this.props.children }

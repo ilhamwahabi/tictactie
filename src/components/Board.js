@@ -143,7 +143,7 @@ class Board extends Component {
   }
 
   onBoxClick = (i) => {
-    if (this.props.box[i]) return
+    if (this.props.box[i] || this.props.isFinish) return
 
     this.props.addTurn();
 
@@ -166,6 +166,7 @@ class Board extends Component {
     const result = this.checkWinner(i, box);
 
     if (this.props.turn === 9 || result.isFinish) {
+      this.props.gameFinish()
       setTimeout(() => { 
         this.props.resetGame(result.score) 
       }, 1000)
