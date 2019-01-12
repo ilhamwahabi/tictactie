@@ -94,73 +94,23 @@ class Board extends Component {
   }
 
   locateHorizontal = (isCircle, loc, spot) => {
-    const linePoint = {
-      alpha: 83, 
-      beta: 30, 
-      gama: 250, 
-      omega: 197, // ((160 x 1) + (7 x 1)) + 30
-      teta: 417,
-      delta: 364 // ((160 x 2) + (7 x 2)) + 30
-    }
-    
-    if (window.innerWidth < 768) {
-      linePoint.alpha = 60 //
-      linePoint.beta = 22.5 //
-      linePoint.gama = 185.5 //
-      linePoint.omega = 150 // 
-      linePoint.teta = 308 //
-      linePoint.delta = 271.5 // 240 + 8 + 22.5
-    } 
-    
-    if (window.innerWidth < 481) {
-      linePoint.alpha = 38.5 //
-      linePoint.beta = 15 //
-      linePoint.gama = 122.5 //
-      linePoint.omega = 96 //
-      linePoint.teta = 204.5 //
-      linePoint.delta = 179 // 160 + 4 + 15
-    }
+    const { alpha, beta, gama, omega, teta, delta } = this.props.pawnPoint    
 
     switch(this.checkRow(loc)) {
-      case (1): isCircle ? spot.y = linePoint.alpha : spot.y = linePoint.beta; break;
-      case (2): isCircle ? spot.y = linePoint.gama : spot.y = linePoint.omega; break;
-      case (3): isCircle ? spot.y = linePoint.teta : spot.y = linePoint.delta; break;
+      case (1): isCircle ? spot.y = alpha : spot.y = beta; break;
+      case (2): isCircle ? spot.y = gama : spot.y = omega; break;
+      case (3): isCircle ? spot.y = teta : spot.y = delta; break;
       default: break;
     }
   }
 
   locateVertical = (isCircle, loc, spot) => {
-    const linePoint = {
-      alpha: 83, 
-      beta: 30, 
-      gama: 250, 
-      omega: 197, // ((160 x 1) + (7 x 1)) + 30
-      teta: 417,
-      delta: 364 // ((160 x 2) + (7 x 2)) + 30
-    }
-    
-    if (window.innerWidth < 768) {
-      linePoint.alpha = 60 //
-      linePoint.beta = 22.5 //
-      linePoint.gama = 185.5 //
-      linePoint.omega = 150 // 
-      linePoint.teta = 308 //
-      linePoint.delta = 271.5 // 240 + 8 + 22.5
-    } 
-    
-    if (window.innerWidth < 481) {
-      linePoint.alpha = 38.5 //
-      linePoint.beta = 15 //
-      linePoint.gama = 122.5 //
-      linePoint.omega = 96 //
-      linePoint.teta = 204.5 //
-      linePoint.delta = 179 // 160 + 4 + 15
-    }
+    const { alpha, beta, gama, omega, teta, delta } = this.props.pawnPoint
 
     switch (this.checkColumn(loc)) {
-      case (1): isCircle ? spot.x = linePoint.alpha : spot.x = linePoint.beta; break;
-      case (2): isCircle ? spot.x = linePoint.gama : spot.x = linePoint.omega; break;
-      case (3): isCircle ? spot.x = linePoint.teta : spot.x = linePoint.delta; break;
+      case (1): isCircle ? spot.x = alpha : spot.x = beta; break;
+      case (2): isCircle ? spot.x = gama : spot.x = omega; break;
+      case (3): isCircle ? spot.x = teta : spot.x = delta; break;
       default: break;
     }
   }

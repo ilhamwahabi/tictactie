@@ -9,6 +9,14 @@ class SizeContext extends Component {
       beta: 167,
       gama: 334,
       omega: 497,
+    },
+    pawnPoint: {
+      alpha: 83, 
+      beta: 30, 
+      gama: 250, 
+      omega: 197,
+      teta: 417,
+      delta: 364,
     }
   }
 
@@ -25,12 +33,32 @@ class SizeContext extends Component {
     this.setState({ linePoint: { ...newLinePoint } })
   }
 
+  setPawnPoint = () => {
+    const wide = { alpha: 83, beta: 30, gama: 250, omega: 197, teta: 417, delta: 364, }
+    const medium = { alpha: 60, beta: 22.5, gama: 185.5, omega: 150, teta: 308, delta: 271.5, }
+    const small = { alpha: 38.5, beta: 15, gama: 122.5, omega: 97, teta: 204.5, delta: 179, }
+
+    let newPawnPoint
+    if (window.innerWidth < 481) newPawnPoint = small
+    else if (window.innerWidth < 768) newPawnPoint = medium
+    else newPawnPoint = wide
+
+    this.setState({ pawnPoint: { ...newPawnPoint } })
+  }
+
+  componentWillMount() {
+    this.setLinePoint()
+    this.setPawnPoint()
+  }
+
   componentDidMount() {
     window.addEventListener('resize', this.setLinePoint)
+    window.addEventListener('resize', this.setPawnPoint)
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.setLinePoint)
+    window.removeEventListener('resize', this.setPawnPoint)
   }
 
   render() {
