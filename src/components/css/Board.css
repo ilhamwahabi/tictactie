@@ -88,4 +88,12 @@ path {
     width: 242px;
     height: 242px;
   }
+
+  circle {
+    stroke-width: 7.5;
+  }
+
+  path {
+    stroke-width: 7.5;
+  }
 }
