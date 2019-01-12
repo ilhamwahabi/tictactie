@@ -18,7 +18,7 @@ class Interact extends Component {
       imageWidth: 200,
       imageHeight: 200,
       title: 'Tic Tac Boom!',
-      text: 'Copyright 2018 Ilham Wahabi',
+      text: `Copyright 2018 Ilham Wahabi`,
       confirmButtonText: 'Cool',
       confirmButtonColor: this.props.theme === 'light' ? '#2196f3' : '#263238',
       footer: (
@@ -57,12 +57,15 @@ class Interact extends Component {
             >
               <ion-icon name="contacts"></ion-icon> Human
             </div>
-            <div
-              onClick={() => onSettingsClicked('mode', 'ai') }
-              className={`options-item ${settings.mode === 'ai' ? 'active' : ''}`}
-            >
+            <div className={`options-item disabled`} data-tip data-for='ai'>
               <ion-icon name="desktop"></ion-icon> AI
             </div>
+            <ReactTooltip
+              id='ai' place="top"
+              type='dark' effect="solid"
+            >
+              Coming soon!
+            </ReactTooltip>
           </div>
           
           <div className={`options-items item-${settings.theme === 'light' ? 'light' : 'dark'}`} ref={this.player}>
