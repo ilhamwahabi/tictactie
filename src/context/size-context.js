@@ -4,20 +4,8 @@ export const { Provider, Consumer } = createContext()
 
 class SizeContext extends Component {
   state = {
-    linePoint: {
-      alpha: 5,
-      beta: 167,
-      gama: 334,
-      omega: 497,
-    },
-    pawnPoint: {
-      alpha: 83, 
-      beta: 30, 
-      gama: 250, 
-      omega: 197,
-      teta: 417,
-      delta: 364,
-    }
+    linePoint: {},
+    pawnPoint: {}
   }
 
   setLinePoint = () => {

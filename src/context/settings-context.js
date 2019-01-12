@@ -11,6 +11,14 @@ class ThemeContext extends Component {
 
   changeSettings = (key, newValue) => {
     this.setState({ [key] : newValue })
+
+    localStorage.setItem('tictacboomSettings', JSON.stringify(this.state))
+  }
+
+  componentDidMount() {
+    const storedSettings = JSON.parse(localStorage.getItem('tictacboomSettings'))
+    
+    if (storedSettings) this.setState({ ...storedSettings })
   }
 
   render() {
