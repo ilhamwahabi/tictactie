@@ -52,9 +52,40 @@ path {
   }
 }
 
-@media (max-width: 525px) {
+@media (max-width: 768px) {
+  .boxes {
+    grid-gap: 2px;
+    width: 364px;
+    height: 364px;
+  }
+
+  .box {
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+  }
+
   svg {
-    width: 300px;
-    height: 300px;
+    width: 364px;
+    height: 364px;
+  }
+}
+
+@media (max-width: 481px) {
+  .boxes {
+    grid-gap: 1px;
+    width: 242px;
+    height: 242px;
+  }
+
+  .box {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+  }
+
+  svg {
+    width: 242px;
+    height: 242px;
   }
 }

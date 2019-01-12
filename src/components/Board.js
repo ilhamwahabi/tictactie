@@ -170,12 +170,35 @@ class Board extends Component {
     return boxes;
   }
 
-  renderSvgLine = () => ([
-    <line key="1" x1="5" y1="167" x2="497" y2="167"></line>,
-    <line key="2" x1="5" y1="334" x2="497" y2="334"></line>,
-    <line key="3" x1="167" y1="5" x2="167" y2="497"></line>,
-    <line key="4" x1="334" y1="5" x2="334" y2="497"></line>,
-  ])
+  renderSvgLine = () => {
+    let linePoint = {
+      alpha: 5,
+      beta: 167,
+      gama: 334,
+      omega: 497,
+    } 
+
+    if (window.innerWidth < 768) {
+      linePoint.alpha = 3
+      linePoint.beta = 124
+      linePoint.gama = 248
+      linePoint.omega = 362
+    } 
+    
+    if (window.innerWidth < 481) {
+      linePoint.alpha = 2
+      linePoint.beta = 82
+      linePoint.gama = 164
+      linePoint.omega = 241
+    }
+    
+    return [
+      <line key="1" x1={linePoint.alpha} y1={linePoint.beta} x2={linePoint.omega} y2={linePoint.beta}></line>,
+      <line key="2" x1={linePoint.alpha} y1={linePoint.gama} x2={linePoint.omega} y2={linePoint.gama}></line>,
+      <line key="3" x1={linePoint.beta} y1={linePoint.alpha} x2={linePoint.beta} y2={linePoint.omega}></line>,
+      <line key="4" x1={linePoint.gama} y1={linePoint.alpha} x2={linePoint.gama} y2={linePoint.omega}></line>,
+    ]
+  }
 
   renderMark = () => ( 
     Object

@@ -1,7 +1,7 @@
 .settings-button, .about-button {
   width: 125px;
   height: 125px;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   cursor: pointer;
 }
@@ -17,14 +17,14 @@
 }
 
 .settings-button .button-icon {
-  position: fixed;
+  position: absolute;
   bottom: 25px;
   left: 25px;
   font-size: 48px;
 }
 
 .about-button .button-icon {
-  position: fixed;
+  position: absolute;
   bottom: 25px;
   right: 25px;
   font-size: 48px;
