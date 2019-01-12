@@ -34,7 +34,6 @@
 
 .see-github {
   text-decoration: none;
-  color: #2196f3;
   font-weight: 600;
   display: flex;
 }
@@ -69,7 +68,6 @@
 }
 
 .active {
-  background-color: #2B77C0;
   border-radius: 15px;
   width: 100px;
   height: 100px;

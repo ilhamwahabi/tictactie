@@ -20,9 +20,11 @@ class Interact extends Component {
       title: 'Tic Tac Boom!',
       text: 'Copyright 2018 Ilham Wahabi',
       confirmButtonText: 'Cool',
+      confirmButtonColor: this.props.theme === 'light' ? '#2196f3' : '#263238',
       footer: (
         <a 
-          class="see-github" rel="noopener noreferrer"
+          className={`see-github link-${this.props.theme === 'light' ? 'light': 'dark'}`}
+          rel="noopener noreferrer"
           href="https://github.com/iwgx/tictac-boom" target="_blank"
         >
           See this project on &nbsp;<ion-icon name="logo-github"></ion-icon>
@@ -48,7 +50,7 @@ class Interact extends Component {
       title: 'Game Settings',
       html: (
         <Fragment>
-          <div className="options-items" ref={this.mode}>
+          <div className={`options-items item-${settings.theme === 'light' ? 'light' : 'dark'}`} ref={this.mode}>
             <div
               onClick={() => onSettingsClicked('mode', 'human') }
               className={`options-item ${settings.mode === 'human' ? 'active' : ''}`}
@@ -63,7 +65,7 @@ class Interact extends Component {
             </div>
           </div>
           
-          <div className="options-items" ref={this.player}>
+          <div className={`options-items item-${settings.theme === 'light' ? 'light' : 'dark'}`} ref={this.player}>
             <div
               onClick={() => onSettingsClicked('player', 'cross') } 
               className={`options-item ${settings.player === 'cross' ? 'active' : ''}`}
@@ -78,7 +80,7 @@ class Interact extends Component {
             </div>
           </div>
 
-          <div className="options-items" ref={this.theme}>
+          <div className={`options-items item-${settings.theme === 'light' ? 'light' : 'dark'}`} ref={this.theme}>
             <div 
               onClick={() => onSettingsClicked('theme', 'light') } 
               className={`options-item ${settings.theme === 'light' ? 'active' : ''}`}
@@ -95,6 +97,7 @@ class Interact extends Component {
         </Fragment>
       ),
       confirmButtonText: 'Save',
+      confirmButtonColor: this.props.theme === 'light' ? '#2196f3' : '#263238',
       showCancelButton: true,
       cancelButtonText: 'Cancel'
     })

@@ -1,9 +1,13 @@
 :root {
   --light-primary: #1F3A93;
+  --light-secondary: #2196f3;
+  --light-tertiary: #2B77C0;
   --light-first: #36DBD7;
   --light-second: #F62459;
   
   --dark-primary: #263238;
+  --dark-secondary: #424242;
+  --dark-tertiary: #263238;
   --dark-first: #FF6D00;
   --dark-second: #00C853;
 }
@@ -68,4 +72,40 @@
 
 .dark .about-button {
   background-color: var(--dark-first);
+}
+
+/* SWEET ALERT */
+
+.link-light {
+  color: var(--light-secondary);
+}
+
+.light .active {
+  background-color: var(--light-tertiary);
+}
+
+.link-dark {
+  color: var(--dark-secondary);
+}
+
+.dark .active {
+  background-color: var(--dark-tertiary);
+}
+
+/* INTERACT */
+
+.light .see-github {
+  color: var(--light-secondary);
+}
+
+.item-light .active {
+  background-color: var(--light-tertiary);
+}
+
+.dark .see-github {
+  color: var(--dark-secondary);
+}
+
+.item-dark .active {
+  background-color: var(--dark-tertiary);
 }
