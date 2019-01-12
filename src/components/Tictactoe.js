@@ -6,6 +6,7 @@ import Interact from './Interact'
 
 import { Consumer as SettingsConsumer } from '../context/settings-context'
 import { Consumer as GameConsumer } from '../context/game-context'
+import { Consumer as SizeConsumer } from '../context/size-context'
 
 import './css/Tictactoe.css'
 
@@ -19,7 +20,11 @@ export default class Tictactoe extends Component {
               {(game) => (
                 <>
                   <Score {...game.score} />
-                  <Board {...game} player={settings.player} />
+                  <SizeConsumer>
+                    {(size) => (
+                      <Board {...game} {...size} player={settings.player} />
+                    )}                  
+                  </SizeConsumer>
                   <Interact {...settings} resetGame={game.resetGame} />
                 </>
               )}

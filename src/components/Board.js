@@ -199,8 +199,6 @@ class Board extends Component {
 
     const box = { ...this.props.box }
 
-    console.log(this.props.player)
-
     switch(this.props.turn % 2) {
       case (0): {
         box[i] = this.props.player === 'cross' ? this.putCircle(i) : this.putCross(i);
@@ -233,32 +231,13 @@ class Board extends Component {
   }
 
   renderSvgLine = () => {
-    let linePoint = {
-      alpha: 5,
-      beta: 167,
-      gama: 334,
-      omega: 497,
-    } 
-
-    if (window.innerWidth < 768) {
-      linePoint.alpha = 3
-      linePoint.beta = 124
-      linePoint.gama = 248
-      linePoint.omega = 362
-    } 
-    
-    if (window.innerWidth < 481) {
-      linePoint.alpha = 2
-      linePoint.beta = 82
-      linePoint.gama = 164
-      linePoint.omega = 241
-    }
+    let { alpha, beta, gama, omega } = this.props.linePoint
     
     return [
-      <line key="1" x1={linePoint.alpha} y1={linePoint.beta} x2={linePoint.omega} y2={linePoint.beta}></line>,
-      <line key="2" x1={linePoint.alpha} y1={linePoint.gama} x2={linePoint.omega} y2={linePoint.gama}></line>,
-      <line key="3" x1={linePoint.beta} y1={linePoint.alpha} x2={linePoint.beta} y2={linePoint.omega}></line>,
-      <line key="4" x1={linePoint.gama} y1={linePoint.alpha} x2={linePoint.gama} y2={linePoint.omega}></line>,
+      <line key="1" x1={alpha} y1={beta} x2={omega} y2={beta}></line>,
+      <line key="2" x1={alpha} y1={gama} x2={omega} y2={gama}></line>,
+      <line key="3" x1={beta} y1={alpha} x2={beta} y2={omega}></line>,
+      <line key="4" x1={gama} y1={alpha} x2={gama} y2={omega}></line>,
     ]
   }
 
