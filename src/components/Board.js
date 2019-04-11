@@ -198,12 +198,16 @@ class Board extends Component {
       .map((el, i) => <Fragment key={i}>{ this.props.box[el] }</Fragment>)
   )
 
+  resetGame = () => {
+    this.props.resetGame({ 1: 0, 2: 0 })
+  }
+
   componentDidMount() {
-    window.addEventListener('resize', () => this.props.resetGame({ 1: 0, 2: 0, }))
+    window.addEventListener('resize', this.resetGame)
   }
 
   componentWillUnmount() {
-    window.addEventListener('resize', () => this.props.resetGame({ 1: 0, 2: 0, }))
+    window.addEventListener('resize', this.resetGame)
   }
 
   render() {
