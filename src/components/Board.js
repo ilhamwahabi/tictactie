@@ -176,7 +176,7 @@ class Board extends Component {
   renderBox = () => {
     const boxes = []
     for (let i = 1; i <= 9; i++) {
-      boxes.push(<div key={i} onClick={() => this.onBoxClick(i)} className={`box`}></div>)
+      boxes.push(<div key={i} onClick={this.onBoxClick.bind(this, i)} className={`box`}></div>)
     }
     return boxes;
   }

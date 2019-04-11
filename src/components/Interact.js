@@ -52,7 +52,7 @@ class Interact extends Component {
         <Fragment>
           <div className={`options-items item-${settings.theme === 'light' ? 'light' : 'dark'}`} ref={this.mode}>
             <div
-              onClick={() => onSettingsClicked('mode', 'human') }
+              onClick={onSettingsClicked.bind(this, 'mode', 'human')}
               className={`options-item ${settings.mode === 'human' ? 'active' : ''}`}
             >
               <ion-icon name="contacts"></ion-icon> Human
@@ -70,13 +70,13 @@ class Interact extends Component {
           
           <div className={`options-items item-${settings.theme === 'light' ? 'light' : 'dark'}`} ref={this.player}>
             <div
-              onClick={() => onSettingsClicked('player', 'cross') } 
+              onClick={onSettingsClicked.bind(this, 'player', 'cross')} 
               className={`options-item ${settings.player === 'cross' ? 'active' : ''}`}
             >
               <ion-icon name="close"></ion-icon> Cross
             </div>
             <div 
-              onClick={() => onSettingsClicked('player', 'circle') }
+              onClick={onSettingsClicked.bind(this, 'player', 'circle')}
               className={`options-item ${settings.player === 'circle' ? 'active' : ''}`}
             >
               <ion-icon name="radio-button-off"></ion-icon> Circle
@@ -85,13 +85,13 @@ class Interact extends Component {
 
           <div className={`options-items item-${settings.theme === 'light' ? 'light' : 'dark'}`} ref={this.theme}>
             <div 
-              onClick={() => onSettingsClicked('theme', 'light') } 
+              onClick={onSettingsClicked.bind(this, 'theme', 'light')} 
               className={`options-item ${settings.theme === 'light' ? 'active' : ''}`}
             >
               <ion-icon name="sunny"></ion-icon> Light
             </div>
             <div 
-              onClick={() => onSettingsClicked('theme', 'dark') } 
+              onClick={onSettingsClicked.bind(this, 'theme', 'dark')} 
               className={`options-item ${settings.theme === 'dark' ? 'active' : ''}`}
             >
               <ion-icon name="moon"></ion-icon> Dark
