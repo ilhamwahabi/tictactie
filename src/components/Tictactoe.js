@@ -4,34 +4,34 @@ import Score from "./Score";
 import Board from "./Board";
 import Interact from "./Interact";
 
-import { Consumer as SettingsConsumer } from "../context/settings-context";
-import { Consumer as GameConsumer } from "../context/game-context";
-import { Consumer as SizeConsumer } from "../context/size-context";
+import { SettingsContext } from "../context/settings-context";
+import { GameContext } from "../context/game-context";
+import { SizeContext } from "../context/size-context";
 
 import "./css/Tictactoe.css";
 
 export default class Tictactoe extends PureComponent {
   render() {
     return (
-      <SettingsConsumer>
+      <SettingsContext.Consumer>
         {settings => (
           <section className={`game ${settings.theme}`}>
-            <GameConsumer>
+            <Score />
+            <GameContext.Consumer>
               {game => (
                 <>
-                  <Score {...game.score} />
-                  <SizeConsumer>
+                  <SizeContext.Consumer>
                     {size => (
                       <Board {...game} {...size} player={settings.player} />
                     )}
-                  </SizeConsumer>
+                  </SizeContext.Consumer>
                   <Interact {...settings} resetGame={game.resetGame} />
                 </>
               )}
-            </GameConsumer>
+            </GameContext.Consumer>
           </section>
         )}
-      </SettingsConsumer>
+      </SettingsContext.Consumer>
     );
   }
 }

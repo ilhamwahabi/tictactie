@@ -1,33 +1,37 @@
-import React, { createContext, Component } from 'react'
+import React, { createContext, Component } from "react";
 
-export const { Consumer, Provider } = createContext()
+export const SettingsContext = createContext();
 
-class ThemeContext extends Component {
+class SettingsContextProvider extends Component {
   state = {
-    theme: 'light',
-    mode: 'human',
-    player: 'cross',
-  }
+    theme: "light",
+    mode: "human",
+    player: "cross"
+  };
 
   changeSettings = (key, newValue) => {
-    this.setState({ [key] : newValue })
+    this.setState({ [key]: newValue });
 
-    localStorage.setItem('tictacboomSettings', JSON.stringify(this.state))
-  }
+    localStorage.setItem("tictacboomSettings", JSON.stringify(this.state));
+  };
 
   componentDidMount() {
-    const storedSettings = JSON.parse(localStorage.getItem('tictacboomSettings'))
-    
-    if (storedSettings) this.setState({ ...storedSettings })
+    const storedSettings = JSON.parse(
+      localStorage.getItem("tictacboomSettings")
+    );
+
+    if (storedSettings) this.setState({ ...storedSettings });
   }
 
   render() {
     return (
-      <Provider value={{...this.state, changeSettings: this.changeSettings}}>
-        { this.props.children }      
-      </Provider>
-    )
+      <SettingsContext.Provider
+        value={{ ...this.state, changeSettings: this.changeSettings }}
+      >
+        {this.props.children}
+      </SettingsContext.Provider>
+    );
   }
 }
 
-export default ThemeContext
+export default SettingsContextProvider;
