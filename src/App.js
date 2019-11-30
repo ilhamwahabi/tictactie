@@ -1,22 +1,21 @@
-import React from 'react'
+import React from "react";
 
-import ThemeContext from './context/settings-context'
-import GameContext from './context/game-context'
-import SizeContext from './context/size-context'
+import SettingsContext from "./context/settings-context";
+import GameContext from "./context/game-context";
+import SizeContext from "./context/size-context";
 
-import Tictactoe from './components/Tictactoe'
-
+import Tictactoe from "./components/Tictactoe";
 
 const Home = () => (
   <main className="home">
-    <ThemeContext>
+    <SettingsContext>
       <GameContext>
         <SizeContext>
           <Tictactoe />
         </SizeContext>
       </GameContext>
-    </ThemeContext>
+    </SettingsContext>
   </main>
-)
+);
 
-export default Home
+export default Home;

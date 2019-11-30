@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
+import React, { PureComponent, Fragment } from "react";
 
 import "./css/Board.css";
 
-class Board extends Component {
+class Board extends PureComponent {
   checkColumn = loc => {
     switch (loc % 3) {
       case 1:
