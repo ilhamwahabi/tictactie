@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from "react";
 
-import "./css/Score.css";
+import "../css/Tictactoe/Score.css";
 
 import { GameContext } from "../context/game-context";
 

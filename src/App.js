@@ -4,7 +4,7 @@ import SettingsContext from "./context/settings-context";
 import GameContext from "./context/game-context";
 import SizeContext from "./context/size-context";
 
-import Tictactoe from "./components/Tictactoe";
+import Tictactoe from "./Tictactoe";
 
 const Home = () => (
   <main className="home">

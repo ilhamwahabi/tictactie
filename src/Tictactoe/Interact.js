@@ -3,7 +3,7 @@ import swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ReactTooltip from "react-tooltip";
 
-import "./css/Interact.css";
+import "../css/Tictactoe/Interact.css";
 
 const Alert = withReactContent(swal);
 

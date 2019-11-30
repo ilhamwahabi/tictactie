@@ -1,6 +1,6 @@
 import React, { PureComponent, Fragment } from "react";
 
-import "./css/Board.css";
+import "../css/Tictactoe/Board.css";
 
 class Board extends PureComponent {
   checkColumn = loc => {

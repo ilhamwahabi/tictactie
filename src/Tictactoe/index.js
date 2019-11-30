@@ -8,7 +8,7 @@ import { SettingsContext } from "../context/settings-context";
 import { GameContext } from "../context/game-context";
 import { SizeContext } from "../context/size-context";
 
-import "./css/Tictactoe.css";
+import "../css/Tictactoe/index.css";
 
 export default class Tictactoe extends PureComponent {
   render() {
