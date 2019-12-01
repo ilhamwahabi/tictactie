@@ -29,3 +29,14 @@
   right: 0;
   transition: background-color 0.5s ease-out;
 }
+
+@media (max-width: 481px) {
+  .score-board {
+    width: 100px;
+    height: 100px;
+  }
+
+  .score-board p {
+    font-size: 72px;
+  }
+}

@@ -19,18 +19,18 @@
   transition: background-color 0.5s ease-out;
 }
 
-.settings-button .button-icon {
+.button-icon {
   position: absolute;
   bottom: 25px;
-  left: 25px;
   font-size: 48px;
 }
 
+.settings-button .button-icon {
+  left: 25px;
+}
+
 .about-button .button-icon {
-  position: absolute;
-  bottom: 25px;
   right: 25px;
-  font-size: 48px;
 }
 
 /* SWEET ALERT */
@@ -76,4 +76,25 @@
   height: 100px;
   padding: 10px;
   color: white;
+}
+
+@media (max-width: 481px) {
+  .settings-button,
+  .about-button {
+    width: 100px;
+    height: 100px;
+  }
+
+  .button-icon {
+    font-size: 40px;
+    bottom: 20px;
+  }
+
+  .settings-button .button-icon {
+    left: 20px;
+  }
+
+  .about-button .button-icon {
+    right: 20px;
+  }
 }
