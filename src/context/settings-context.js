@@ -1,26 +1,41 @@
-import React, { createContext, Component } from "react";
+// @flow
 
-export const SettingsContext = createContext();
+import * as React from "react";
 
-class SettingsContextProvider extends Component {
+type SettingsContextProviderProps = {
+  children: React.Node
+};
+
+type SettingsContextProviderState = {
+  theme: "light" | "dark",
+  mode: "human" | "ai",
+  player: "cross" | "circle"
+};
+
+type SettingsContextValue = SettingsContextProviderState & {
+  changeSettings: (key: string, newValue: string) => void
+};
+
+export const SettingsContext = React.createContext<SettingsContextValue>({});
+
+class SettingsContextProvider extends React.PureComponent<
+  SettingsContextProviderProps,
+  SettingsContextProviderState
+> {
   state = {
     theme: "light",
     mode: "human",
     player: "cross"
   };
 
-  changeSettings = (key, newValue) => {
+  changeSettings = (key: string, newValue: string) => {
     this.setState({ [key]: newValue });
-
-    localStorage.setItem("tictacboomSettings", JSON.stringify(this.state));
+    localStorage.setItem("tictacboom:settings", JSON.stringify(this.state));
   };
 
   componentDidMount() {
-    const storedSettings = JSON.parse(
-      localStorage.getItem("tictacboomSettings")
-    );
-
-    if (storedSettings) this.setState({ ...storedSettings });
+    const storedSettings = localStorage.getItem("tictacboom:settings");
+    if (storedSettings) this.setState({ ...JSON.parse(storedSettings) });
   }
 
   render() {
