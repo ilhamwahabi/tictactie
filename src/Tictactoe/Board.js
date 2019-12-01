@@ -126,7 +126,7 @@ class Board extends PureComponent {
   };
 
   locateHorizontal = (isCircle, loc, spot) => {
-    const { alpha, beta, gama, omega, teta, delta } = this.props.pawnPoint;
+    const { alpha, beta, gama, omega, teta, delta } = this.props.squarePoint;
 
     switch (this.checkRow(loc)) {
       case 1:
@@ -144,7 +144,7 @@ class Board extends PureComponent {
   };
 
   locateVertical = (isCircle, loc, spot) => {
-    const { alpha, beta, gama, omega, teta, delta } = this.props.pawnPoint;
+    const { alpha, beta, gama, omega, teta, delta } = this.props.squarePoint;
 
     switch (this.checkColumn(loc)) {
       case 1:
@@ -237,7 +237,7 @@ class Board extends PureComponent {
           key={i}
           onClick={this.onBoxClick.bind(this, i)}
           className={`box`}
-        ></div>
+        />
       );
     }
     return boxes;
@@ -247,10 +247,10 @@ class Board extends PureComponent {
     let { alpha, beta, gama, omega } = this.props.linePoint;
 
     return [
-      <line key="1" x1={alpha} y1={beta} x2={omega} y2={beta}></line>,
-      <line key="2" x1={alpha} y1={gama} x2={omega} y2={gama}></line>,
-      <line key="3" x1={beta} y1={alpha} x2={beta} y2={omega}></line>,
-      <line key="4" x1={gama} y1={alpha} x2={gama} y2={omega}></line>
+      <line key="1" x1={alpha} y1={beta} x2={omega} y2={beta} />,
+      <line key="2" x1={alpha} y1={gama} x2={omega} y2={gama} />,
+      <line key="3" x1={beta} y1={alpha} x2={beta} y2={omega} />,
+      <line key="4" x1={gama} y1={alpha} x2={gama} y2={omega} />
     ];
   };
 
