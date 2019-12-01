@@ -196,11 +196,11 @@ class Board extends PureComponent {
   };
 
   onBoxClick = i => {
-    if (this.props.box[i] || this.props.isFinish) return;
+    if (this.props.board[i] || this.props.isFinish) return;
 
     this.props.addTurn();
 
-    const box = { ...this.props.box };
+    const box = { ...this.props.board };
 
     switch (this.props.turn % 2) {
       case 0: {
@@ -217,7 +217,7 @@ class Board extends PureComponent {
         break;
     }
 
-    this.props.updateBox(box);
+    this.props.updateBoard(box);
 
     const result = this.checkWinner(i, box);
 
@@ -255,8 +255,8 @@ class Board extends PureComponent {
   };
 
   renderMark = () =>
-    Object.keys(this.props.box).map((el, i) => (
-      <Fragment key={i}>{this.props.box[el]}</Fragment>
+    Object.keys(this.props.board).map((el, i) => (
+      <Fragment key={i}>{this.props.board[el]}</Fragment>
     ));
 
   resetGame = () => {

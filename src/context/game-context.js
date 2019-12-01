@@ -1,24 +1,43 @@
-import React, { createContext, Component } from "react";
+// @flow
 
-export const GameContext = createContext("game");
+import * as React from "react";
 
-const defaultBox = {
-  1: null,
-  2: null,
-  3: null,
-  4: null,
-  5: null,
-  6: null,
-  7: null,
-  8: null,
-  9: null
+type Score = { [key: string]: number };
+type Board = { [key: string]: null | React.Node };
+
+type GameContextProviderProps = {
+  children: React.Node
 };
 
-class GameContextProvider extends Component {
+type GameContextProviderState = {
+  turn: number,
+  score: Score,
+  board: Board,
+  isFinish: boolean
+};
+
+type GameContextValue = GameContextProviderState & {
+  addTurn: () => void,
+  updateBoard: (board: Board) => void,
+  resetGame: (score: Score) => void,
+  gameFinish: () => void
+};
+
+export const GameContext = React.createContext<GameContextValue>({});
+
+const defaultBox = Array.from({ length: 9 }).reduce(
+  (acc, _, index) => ({ ...acc, [index]: null }),
+  {}
+);
+
+class GameContextProvider extends React.PureComponent<
+  GameContextProviderProps,
+  GameContextProviderState
+> {
   state = {
     turn: 1,
-    score: { 1: 0, 2: 0 },
-    box: { ...defaultBox },
+    score: { "1": 0, "2": 0 },
+    board: { ...defaultBox },
     isFinish: false
   };
 
@@ -30,15 +49,15 @@ class GameContextProvider extends Component {
     this.setState({ isFinish: true });
   };
 
-  updateBox = box => {
-    this.setState({ box });
+  updateBoard = (board: Board) => {
+    this.setState({ board });
   };
 
-  resetGame = score => {
+  resetGame = (score: Score) => {
     this.setState({
       turn: 1,
       score,
-      box: { ...defaultBox },
+      board: { ...defaultBox },
       isFinish: false
     });
   };
@@ -49,7 +68,7 @@ class GameContextProvider extends Component {
         value={{
           ...this.state,
           addTurn: this.addTurn,
-          updateBox: this.updateBox,
+          updateBoard: this.updateBoard,
           resetGame: this.resetGame,
           gameFinish: this.gameFinish
         }}
