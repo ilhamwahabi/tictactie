@@ -37,6 +37,7 @@ circle {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  transition: stroke 0.5s ease-out;
 }
 
 path {
@@ -44,6 +45,7 @@ path {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+  transition: stroke 0.5s ease-out;
 }
 
 @keyframes dash {

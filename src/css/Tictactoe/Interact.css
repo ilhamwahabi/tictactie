@@ -1,4 +1,5 @@
-.settings-button, .about-button {
+.settings-button,
+.about-button {
   width: 125px;
   height: 125px;
   position: absolute;
@@ -9,11 +10,13 @@
 .settings-button {
   border-top-right-radius: 125px;
   left: 0;
+  transition: background-color 0.5s ease-out;
 }
 
 .about-button {
   border-top-left-radius: 125px;
   right: 0;
+  transition: background-color 0.5s ease-out;
 }
 
 .settings-button .button-icon {
