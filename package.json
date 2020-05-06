@@ -10,7 +10,8 @@
     "react-scripts": "3.4.0",
     "react-tooltip": "^4.0.3",
     "sweetalert2": "^9.8.2",
-    "sweetalert2-react-content": "^3.0.1"
+    "sweetalert2-react-content": "^3.0.1",
+    "typeface-raleway": "0.0.75"
   },
   "scripts": {
     "start": "react-scripts start",
