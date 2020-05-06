@@ -8,7 +8,6 @@ import "../css/Tictactoe/Interact.css";
 const Alert = withReactContent(swal);
 
 class Interact extends PureComponent {
-  mode = createRef();
   player = createRef();
   theme = createRef();
 
@@ -35,11 +34,11 @@ class Interact extends PureComponent {
         >
           See this project on &nbsp;<ion-icon name="logo-github"></ion-icon>
         </a>
-      )
+      ),
     });
   };
 
-  toggleActiveClass = ref => {
+  toggleActiveClass = (ref) => {
     for (let button of [...this[ref].current.childNodes]) {
       button.classList.toggle("active");
     }
@@ -57,28 +56,6 @@ class Interact extends PureComponent {
       title: "Game Settings",
       html: (
         <Fragment>
-          <div
-            className={`options-items item-${
-              settings.theme === "light" ? "light" : "dark"
-            }`}
-            ref={this.mode}
-          >
-            <div
-              onClick={onSettingsClicked.bind(this, "mode", "human")}
-              className={`options-item ${
-                settings.mode === "human" ? "active" : ""
-              }`}
-            >
-              <ion-icon name="contacts"></ion-icon> Human
-            </div>
-            <div className={`options-item disabled`} data-tip data-for="ai">
-              <ion-icon name="desktop"></ion-icon> AI
-            </div>
-            <ReactTooltip id="ai" place="top" type="dark" effect="solid">
-              Coming soon!
-            </ReactTooltip>
-          </div>
-
           <div
             className={`options-items item-${
               settings.theme === "light" ? "light" : "dark"
@@ -131,7 +108,7 @@ class Interact extends PureComponent {
       confirmButtonText: "Save",
       confirmButtonColor: this.props.theme === "light" ? "#2196f3" : "#263238",
       showCancelButton: true,
-      cancelButtonText: "Cancel"
+      cancelButtonText: "Cancel",
     }).then(({ value }) => {
       if (!value) return;
 

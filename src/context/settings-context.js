@@ -3,17 +3,16 @@
 import * as React from "react";
 
 type SettingsContextProviderProps = {
-  children: React.Node
+  children: React.Node,
 };
 
 type SettingsContextProviderState = {
   theme: "light" | "dark",
-  mode: "human" | "ai",
-  player: "cross" | "circle"
+  player: "cross" | "circle",
 };
 
 type SettingsContextValue = SettingsContextProviderState & {
-  changeSettings: (key: string, newValue: string) => void
+  changeSettings: (key: string, newValue: string) => void,
 };
 
 export const SettingsContext = React.createContext<SettingsContextValue>({});
@@ -24,8 +23,7 @@ class SettingsContextProvider extends React.PureComponent<
 > {
   state = {
     theme: "light",
-    mode: "human",
-    player: "cross"
+    player: "cross",
   };
 
   changeSettings = (key: string, newValue: string) => {
