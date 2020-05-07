@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 
-svg {
+.svg-board {
   stroke: rgb(0, 0, 0);
   width: 501px;
   height: 501px;
@@ -25,14 +25,14 @@ svg {
   fill: none;
 }
 
-line {
+.line {
   stroke: white;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: dash 1.25s cubic-bezier(0.65, 0, 0.45, 1) forwards;
 }
 
-circle {
+.circle {
   stroke-width: 12.5;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -40,7 +40,7 @@ circle {
   transition: stroke 0.5s ease-out;
 }
 
-path {
+.cross {
   stroke-width: 12.5;
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
@@ -67,7 +67,7 @@ path {
     cursor: pointer;
   }
 
-  svg {
+  .svg-board {
     width: 364px;
     height: 364px;
   }
@@ -86,20 +86,20 @@ path {
     cursor: pointer;
   }
 
-  svg {
+  .svg-board {
     width: 242px;
     height: 242px;
   }
 
-  line {
+  .line {
     stroke-width: 5;
   }
 
-  circle {
+  .circle {
     stroke-width: 7.5;
   }
 
-  path {
+  .cross {
     stroke-width: 7.5;
   }
 }

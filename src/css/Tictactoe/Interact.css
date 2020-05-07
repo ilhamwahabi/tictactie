@@ -37,7 +37,7 @@
 
 .see-github {
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   display: flex;
 }
 
@@ -65,7 +65,7 @@
   padding: 10px;
 }
 
-.options-item ion-icon {
+.options-item .option-icon {
   margin-bottom: 10px;
   font-size: 48px;
 }

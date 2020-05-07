@@ -3,7 +3,7 @@ import React, { PureComponent, Fragment } from "react";
 import "../css/Tictactoe/Board.css";
 
 class Board extends PureComponent {
-  checkColumn = loc => {
+  checkColumn = (loc) => {
     switch (loc % 3) {
       case 1:
         return 1;
@@ -16,7 +16,7 @@ class Board extends PureComponent {
     }
   };
 
-  checkRow = loc => {
+  checkRow = (loc) => {
     switch (Math.ceil(loc / 3)) {
       case 1:
         return 1;
@@ -29,7 +29,7 @@ class Board extends PureComponent {
     }
   };
 
-  mostLeftBox = loc => {
+  mostLeftBox = (loc) => {
     if (this.checkColumn(loc) === 1) {
       return loc;
     } else {
@@ -37,7 +37,7 @@ class Board extends PureComponent {
     }
   };
 
-  mostTopBox = loc => {
+  mostTopBox = (loc) => {
     if (this.checkRow(loc) === 1) {
       return loc;
     } else {
@@ -161,7 +161,7 @@ class Board extends PureComponent {
     }
   };
 
-  putCircle = loc => {
+  putCircle = (loc) => {
     let centerSpot = { x: null, y: null };
     this.locateHorizontal(true, loc, centerSpot);
     this.locateVertical(true, loc, centerSpot);
@@ -170,10 +170,12 @@ class Board extends PureComponent {
     if (window.innerWidth < 768) r = 41.25;
     if (window.innerWidth < 481) r = 27.5;
 
-    return <circle cx={centerSpot.x} cy={centerSpot.y} r={r} />;
+    return (
+      <circle className="circle" cx={centerSpot.x} cy={centerSpot.y} r={r} />
+    );
   };
 
-  putCross = loc => {
+  putCross = (loc) => {
     let topLeftSpot = { x: null, y: null };
     this.locateHorizontal(false, loc, topLeftSpot);
     this.locateVertical(false, loc, topLeftSpot);
@@ -184,9 +186,11 @@ class Board extends PureComponent {
 
     return (
       <path
+        className="cross"
         d={`
-      M${topLeftSpot.x} ${topLeftSpot.y} ${topLeftSpot.x + r} ${topLeftSpot.y +
-          r} 
+      M${topLeftSpot.x} ${topLeftSpot.y} ${topLeftSpot.x + r} ${
+          topLeftSpot.y + r
+        } 
       M${topLeftSpot.x} ${topLeftSpot.y + r} ${topLeftSpot.x + r} ${
           topLeftSpot.y
         }
@@ -195,7 +199,7 @@ class Board extends PureComponent {
     );
   };
 
-  onBoxClick = i => {
+  onBoxClick = (i) => {
     if (this.props.board[i] || this.props.isFinish) return;
 
     this.props.addTurn();
@@ -247,10 +251,38 @@ class Board extends PureComponent {
     let { alpha, beta, gama, omega } = this.props.linePoint;
 
     return [
-      <line key="1" x1={alpha} y1={beta} x2={omega} y2={beta} />,
-      <line key="2" x1={alpha} y1={gama} x2={omega} y2={gama} />,
-      <line key="3" x1={beta} y1={alpha} x2={beta} y2={omega} />,
-      <line key="4" x1={gama} y1={alpha} x2={gama} y2={omega} />
+      <line
+        className="line"
+        key="1"
+        x1={alpha}
+        y1={beta}
+        x2={omega}
+        y2={beta}
+      />,
+      <line
+        className="line"
+        key="2"
+        x1={alpha}
+        y1={gama}
+        x2={omega}
+        y2={gama}
+      />,
+      <line
+        className="line"
+        key="3"
+        x1={beta}
+        y1={alpha}
+        x2={beta}
+        y2={omega}
+      />,
+      <line
+        className="line"
+        key="4"
+        x1={gama}
+        y1={alpha}
+        x2={gama}
+        y2={omega}
+      />,
     ];
   };
 
@@ -274,7 +306,7 @@ class Board extends PureComponent {
   render() {
     return (
       <Fragment>
-        <svg>
+        <svg className="svg-board">
           {this.renderSvgLine()}
           {this.renderMark()}
         </svg>

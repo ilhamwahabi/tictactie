@@ -2,6 +2,15 @@ import React, { PureComponent, Fragment, createRef } from "react";
 import swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import ReactTooltip from "react-tooltip";
+import {
+  IoLogoGithub,
+  IoMdHappy,
+  IoMdSettings,
+  IoMdMoon,
+  IoMdSunny,
+  IoMdRadioButtonOff,
+  IoMdClose,
+} from "react-icons/io";
 
 import "../css/Tictactoe/Interact.css";
 
@@ -32,7 +41,7 @@ class Interact extends PureComponent {
           href="https://github.com/iwgx/tictac-boom"
           target="_blank"
         >
-          See this project on &nbsp;<ion-icon name="logo-github"></ion-icon>
+          See this project on &nbsp; <IoLogoGithub />
         </a>
       ),
     });
@@ -68,7 +77,7 @@ class Interact extends PureComponent {
                 settings.player === "cross" ? "active" : ""
               }`}
             >
-              <ion-icon name="close"></ion-icon> Cross
+              <IoMdClose className="option-icon" /> Cross
             </div>
             <div
               onClick={onSettingsClicked.bind(this, "player", "circle")}
@@ -76,7 +85,7 @@ class Interact extends PureComponent {
                 settings.player === "circle" ? "active" : ""
               }`}
             >
-              <ion-icon name="radio-button-off"></ion-icon> Circle
+              <IoMdRadioButtonOff className="option-icon" /> Circle
             </div>
           </div>
 
@@ -92,7 +101,7 @@ class Interact extends PureComponent {
                 settings.theme === "light" ? "active" : ""
               }`}
             >
-              <ion-icon name="sunny"></ion-icon> Light
+              <IoMdSunny className="option-icon" /> Light
             </div>
             <div
               onClick={onSettingsClicked.bind(this, "theme", "dark")}
@@ -100,7 +109,7 @@ class Interact extends PureComponent {
                 settings.theme === "dark" ? "active" : ""
               }`}
             >
-              <ion-icon name="moon"></ion-icon> Dark
+              <IoMdMoon className="option-icon" /> Dark
             </div>
           </div>
         </Fragment>
@@ -130,7 +139,7 @@ class Interact extends PureComponent {
           className="settings-button"
           onClick={this.openSettingsSwal}
         >
-          <ion-icon name="settings" class="md-48 button-icon"></ion-icon>
+          <IoMdSettings className="button-icon" />
         </div>
         <div
           data-tip
@@ -138,7 +147,7 @@ class Interact extends PureComponent {
           className="about-button"
           onClick={this.openAboutSwal}
         >
-          <ion-icon name="happy" class="md-48 button-icon"></ion-icon>
+          <IoMdHappy className="button-icon" />
         </div>
 
         <ReactTooltip id="settings" place="right" type="dark" effect="solid">
