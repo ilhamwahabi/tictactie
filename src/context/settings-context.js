@@ -1,32 +1,14 @@
-// @flow
+import React from "react";
 
-import * as React from "react";
+export const SettingsContext = React.createContext({});
 
-type SettingsContextProviderProps = {
-  children: React.Node,
-};
-
-type SettingsContextProviderState = {
-  theme: "light" | "dark",
-  player: "cross" | "circle",
-};
-
-type SettingsContextValue = SettingsContextProviderState & {
-  changeSettings: (key: string, newValue: string) => void,
-};
-
-export const SettingsContext = React.createContext<SettingsContextValue>({});
-
-class SettingsContextProvider extends React.PureComponent<
-  SettingsContextProviderProps,
-  SettingsContextProviderState
-> {
+class SettingsContextProvider extends React.PureComponent {
   state = {
     theme: "light",
     player: "cross",
   };
 
-  changeSettings = (key: string, newValue: string) => {
+  changeSettings = (key, newValue) => {
     this.setState({ [key]: newValue });
     localStorage.setItem("tictacboom:settings", JSON.stringify(this.state));
   };

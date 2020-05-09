@@ -1,24 +1,11 @@
-// @flow
+import React from "react";
 
-import * as React from "react";
-
-type SizeContextProviderProps = {
-  children: React.Node
-};
-
-type SizeContextProviderState = {
-  linePoint: { [key: "alpha" | "beta" | "gama" | "omega"]: number },
-  squarePoint: {
-    [key: "alpha" | "beta" | "gama" | "omega" | "teta" | "delta"]: number
-  }
-};
-
-export const SizeContext = React.createContext<SizeContextProviderState>({});
+export const SizeContext = React.createContext({});
 
 const linePoints = {
   wide: { alpha: 5, beta: 167, gama: 334, omega: 497 },
   medium: { alpha: 3, beta: 124, gama: 248, omega: 362 },
-  small: { alpha: 2, beta: 82, gama: 164, omega: 241 }
+  small: { alpha: 2, beta: 82, gama: 164, omega: 241 },
 };
 
 const squarePoints = {
@@ -28,7 +15,7 @@ const squarePoints = {
     gama: 250,
     omega: 197,
     teta: 417,
-    delta: 364
+    delta: 364,
   },
   medium: {
     alpha: 60,
@@ -36,7 +23,7 @@ const squarePoints = {
     gama: 185.5,
     omega: 150,
     teta: 308,
-    delta: 271.5
+    delta: 271.5,
   },
   small: {
     alpha: 38.5,
@@ -44,17 +31,14 @@ const squarePoints = {
     gama: 122.5,
     omega: 97,
     teta: 204.5,
-    delta: 179
-  }
+    delta: 179,
+  },
 };
 
-class SizeContextProvider extends React.PureComponent<
-  SizeContextProviderProps,
-  SizeContextProviderState
-> {
+class SizeContextProvider extends React.PureComponent {
   state = {
     linePoint: {},
-    squarePoint: {}
+    squarePoint: {},
   };
 
   setPoint = () => {
@@ -74,7 +58,7 @@ class SizeContextProvider extends React.PureComponent<
 
     this.setState({
       linePoint: { ...newLinePoint },
-      squarePoint: { ...newSquarePoint }
+      squarePoint: { ...newSquarePoint },
     });
   };
 
