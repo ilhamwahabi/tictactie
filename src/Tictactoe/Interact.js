@@ -24,8 +24,7 @@ class Interact extends PureComponent {
     const currentYear = new Date().getFullYear();
 
     Alert.fire({
-      imageUrl:
-        "https://upload.wikimedia.org/wikipedia/commons/6/64/Tic-tac-toe.png",
+      imageUrl: require("../image/logo.png"),
       imageWidth: 200,
       imageHeight: 200,
       title: "Tic Tac Boom!",
@@ -125,7 +124,7 @@ class Interact extends PureComponent {
       this.props.changeSettings("theme", settings.theme);
 
       if (this.props.player !== settings.player)
-        this.props.resetGame({ 1: 0, 2: 0 });
+        this.props.resetGame({ firstPlayer: 0, secondPlayer: 0 });
       this.props.changeSettings("player", settings.player);
     });
   };

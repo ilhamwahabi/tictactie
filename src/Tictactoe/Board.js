@@ -292,7 +292,7 @@ class Board extends PureComponent {
     ));
 
   resetGame = () => {
-    this.props.resetGame({ 1: 0, 2: 0 });
+    this.props.resetGame({ firstPlayer: 0, secondPlayer: 0 });
   };
 
   componentDidMount() {
