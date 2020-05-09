@@ -9,15 +9,15 @@ class Score extends PureComponent {
 
   render() {
     const { score } = this.context;
-    const { 1: firstPlayerScore, 2: secondPlayerScore } = score;
+    const { firstPlayer, secondPlayer } = score;
 
     return (
       <Fragment>
         <div className="score-board left-score">
-          <p>{firstPlayerScore}</p>
+          <p>{firstPlayer}</p>
         </div>
         <div className="score-board right-score">
-          <p>{secondPlayerScore}</p>
+          <p>{secondPlayer}</p>
         </div>
       </Fragment>
     );

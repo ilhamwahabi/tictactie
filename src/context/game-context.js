@@ -10,7 +10,7 @@ const defaultBox = Array.from({ length: 9 }).reduce(
 class GameContextProvider extends React.PureComponent {
   state = {
     turn: 1,
-    score: { "1": 0, "2": 0 },
+    score: { firstPlayer: 0, secondPlayer: 0 },
     board: { ...defaultBox },
     isFinish: false,
   };

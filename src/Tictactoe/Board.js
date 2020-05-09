@@ -112,10 +112,10 @@ class Board extends PureComponent {
     if (vertical || horizontal || leftDiagonal || rightDiagonal) {
       switch (box[loc].type) {
         case "path":
-          score[1] += 1;
+          score.firstPlayer += 1;
           break;
         case "circle":
-          score[2] += 1;
+          score.secondPlayer += 1;
           break;
         default:
           break;

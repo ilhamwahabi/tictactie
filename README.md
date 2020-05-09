@@ -2,9 +2,9 @@
 
 ## About
 
-Cool tic-tac-toe game built using React (+ Flow) that utilize SVG.
+Cool tic-tac-toe game built using React that utilize SVG.
 
-Main purpose of this project is to learn Context (and Flow) in React.
+Main purpose of this project is to learn Context in React.
 
 ## Usage
 
