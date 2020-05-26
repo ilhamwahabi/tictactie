@@ -11,8 +11,6 @@ class Board extends PureComponent {
         return 2;
       case 0:
         return 3;
-      default:
-        break;
     }
   };
 
@@ -24,8 +22,6 @@ class Board extends PureComponent {
         return 2;
       case 3:
         return 3;
-      default:
-        break;
     }
   };
 
@@ -87,8 +83,6 @@ class Board extends PureComponent {
         }
         break;
       }
-      default:
-        break;
     }
   };
 
@@ -117,8 +111,6 @@ class Board extends PureComponent {
         case "circle":
           score.secondPlayer += 1;
           break;
-        default:
-          break;
       }
       return { isFinish: true, score };
     }
@@ -138,8 +130,6 @@ class Board extends PureComponent {
       case 3:
         isCircle ? (spot.y = teta) : (spot.y = delta);
         break;
-      default:
-        break;
     }
   };
 
@@ -155,8 +145,6 @@ class Board extends PureComponent {
         break;
       case 3:
         isCircle ? (spot.x = teta) : (spot.x = delta);
-        break;
-      default:
         break;
     }
   };
@@ -199,7 +187,50 @@ class Board extends PureComponent {
     );
   };
 
-  onBoxClick = (i) => {
+  actionSecondPlayerClick = () => {
+    const notCheckedBoxIndexes = [];
+    for (let i = 1; i <= 9; i++) {
+      if (!this.props.board[i]) {
+        notCheckedBoxIndexes.push(i);
+      }
+    }
+
+    let i = parseInt(
+      notCheckedBoxIndexes[
+        Math.floor(Math.random() * notCheckedBoxIndexes.length)
+      ]
+    );
+
+    const box = { ...this.props.board };
+
+    this.props.addTurn();
+
+    switch (this.props.turn % 2) {
+      case 0: {
+        box[i] =
+          this.props.player === "cross" ? this.putCross(i) : this.putCircle(i);
+        break;
+      }
+      case 1: {
+        box[i] =
+          this.props.player === "cross" ? this.putCircle(i) : this.putCross(i);
+        break;
+      }
+    }
+
+    this.props.updateBoard(box);
+
+    const result = this.checkWinner(i, box);
+
+    if (this.props.turn === 10 || result.isFinish) {
+      this.props.gameFinish();
+      setTimeout(() => {
+        this.props.resetGame(result.score);
+      }, 1000);
+    }
+  };
+
+  actionFirstPlayerClick = (i) => {
     if (this.props.board[i] || this.props.isFinish) return;
 
     this.props.addTurn();
@@ -217,8 +248,6 @@ class Board extends PureComponent {
           this.props.player === "cross" ? this.putCross(i) : this.putCircle(i);
         break;
       }
-      default:
-        break;
     }
 
     this.props.updateBoard(box);
@@ -230,6 +259,10 @@ class Board extends PureComponent {
       setTimeout(() => {
         this.props.resetGame(result.score);
       }, 1000);
+    } else {
+      setTimeout(() => {
+        this.actionSecondPlayerClick();
+      }, 500);
     }
   };
 
@@ -239,7 +272,7 @@ class Board extends PureComponent {
       boxes.push(
         <div
           key={i}
-          onClick={this.onBoxClick.bind(this, i)}
+          onClick={this.actionFirstPlayerClick.bind(this, i)}
           className={`box`}
         />
       );
@@ -305,13 +338,13 @@ class Board extends PureComponent {
 
   render() {
     return (
-      <Fragment>
+      <>
         <svg className="svg-board">
           {this.renderSvgLine()}
           {this.renderMark()}
         </svg>
         <div className="boxes">{this.renderBox()}</div>
-      </Fragment>
+      </>
     );
   }
 }
