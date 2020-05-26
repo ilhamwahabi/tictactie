@@ -11,6 +11,8 @@ class Board extends PureComponent {
         return 2;
       case 0:
         return 3;
+      default:
+        break;
     }
   };
 
@@ -22,6 +24,8 @@ class Board extends PureComponent {
         return 2;
       case 3:
         return 3;
+      default:
+        break;
     }
   };
 
@@ -83,6 +87,8 @@ class Board extends PureComponent {
         }
         break;
       }
+      default:
+        break;
     }
   };
 
@@ -111,6 +117,8 @@ class Board extends PureComponent {
         case "circle":
           score.secondPlayer += 1;
           break;
+        default:
+          break;
       }
       return { isFinish: true, score };
     }
@@ -130,6 +138,8 @@ class Board extends PureComponent {
       case 3:
         isCircle ? (spot.y = teta) : (spot.y = delta);
         break;
+      default:
+        break;
     }
   };
 
@@ -145,6 +155,8 @@ class Board extends PureComponent {
         break;
       case 3:
         isCircle ? (spot.x = teta) : (spot.x = delta);
+        break;
+      default:
         break;
     }
   };
@@ -187,7 +199,7 @@ class Board extends PureComponent {
     );
   };
 
-  actionSecondPlayerClick = () => {
+  actionBotClick = () => {
     const notCheckedBoxIndexes = [];
     for (let i = 1; i <= 9; i++) {
       if (!this.props.board[i]) {
@@ -201,22 +213,12 @@ class Board extends PureComponent {
       ]
     );
 
-    const box = { ...this.props.board };
-
     this.props.addTurn();
 
-    switch (this.props.turn % 2) {
-      case 0: {
-        box[i] =
-          this.props.player === "cross" ? this.putCross(i) : this.putCircle(i);
-        break;
-      }
-      case 1: {
-        box[i] =
-          this.props.player === "cross" ? this.putCircle(i) : this.putCross(i);
-        break;
-      }
-    }
+    const box = { ...this.props.board };
+
+    if (this.props.turn % 2 === 0) box[i] = this.putCross(i);
+    else if (this.props.turn % 2 === 1) box[i] = this.putCircle(i);
 
     this.props.updateBoard(box);
 
@@ -226,29 +228,24 @@ class Board extends PureComponent {
       this.props.gameFinish();
       setTimeout(() => {
         this.props.resetGame(result.score);
+        if (this.props.player === "circle") {
+          setTimeout(this.actionBotClick, 500);
+        }
       }, 1000);
     }
   };
 
-  actionFirstPlayerClick = (i) => {
+  actionPlayerClick = (i) => {
+    if (this.props.player === "cross" && this.props.turn % 2 === 0) return;
+    if (this.props.player === "circle" && this.props.turn % 2 === 1) return;
     if (this.props.board[i] || this.props.isFinish) return;
 
     this.props.addTurn();
 
     const box = { ...this.props.board };
 
-    switch (this.props.turn % 2) {
-      case 0: {
-        box[i] =
-          this.props.player === "cross" ? this.putCircle(i) : this.putCross(i);
-        break;
-      }
-      case 1: {
-        box[i] =
-          this.props.player === "cross" ? this.putCross(i) : this.putCircle(i);
-        break;
-      }
-    }
+    if (this.props.turn % 2 === 0) box[i] = this.putCircle(i);
+    else if (this.props.turn % 2 === 1) box[i] = this.putCross(i);
 
     this.props.updateBoard(box);
 
@@ -258,10 +255,13 @@ class Board extends PureComponent {
       this.props.gameFinish();
       setTimeout(() => {
         this.props.resetGame(result.score);
+        if (this.props.player === "circle") {
+          setTimeout(this.actionBotClick, 500);
+        }
       }, 1000);
     } else {
       setTimeout(() => {
-        this.actionSecondPlayerClick();
+        this.actionBotClick();
       }, 500);
     }
   };
@@ -272,7 +272,7 @@ class Board extends PureComponent {
       boxes.push(
         <div
           key={i}
-          onClick={this.actionFirstPlayerClick.bind(this, i)}
+          onClick={this.actionPlayerClick.bind(this, i)}
           className={`box`}
         />
       );
@@ -334,6 +334,17 @@ class Board extends PureComponent {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.resetGame);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.player !== this.props.player &&
+      this.props.player === "circle"
+    ) {
+      setTimeout(() => {
+        this.actionBotClick();
+      }, 750);
+    }
   }
 
   render() {
