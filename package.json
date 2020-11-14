@@ -1,6 +1,5 @@
 {
   "name": "tictac-boom",
-  "homepage": "http://iwgx.github.io/tictac-boom",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -17,18 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
-  },
-  "husky": {
-    "hooks": {
-      "pre-push": "npm run deploy"
-    }
-  },
-  "devDependencies": {
-    "gh-pages": "^2.2.0",
-    "husky": "^4.2.3"
+    "eject": "react-scripts eject"
   },
   "browserslist": [
     ">0.2%",
