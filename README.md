@@ -12,4 +12,4 @@ Main purpose of this project is to learn Context in React.
 2. Make sure you have NodeJS and npm installed. Then install all dependencies with `npm install`
 3. Run app locally with `npm start`, it will opened on 'http://localhost:3000/'
 
-Or try here https://tictac-boom.iwgx.io
+Or try here https://tictac-boom.game.iwgx.io
