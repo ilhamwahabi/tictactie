@@ -2,7 +2,7 @@
 
 ## About
 
-Cool tic-tac-toe game built using React that utilize SVG.
+Cool tic-tac-toe game built using React that utilize SVG. Analytics by Splitbee.
 
 Main purpose of this project is to learn Context in React.
 
