@@ -6,6 +6,9 @@ import splitbee from '@splitbee/web';
 import App from "./App";
 import "./css/index.css";
 
-splitbee.init()
+splitbee.init({
+  scriptUrl: "/bee.js",
+  apiUrl: "/_hive",
+})
 
 ReactDOM.render(<App />, document.getElementById("root"));
