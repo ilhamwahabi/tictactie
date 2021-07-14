@@ -10,11 +10,11 @@ class SettingsContextProvider extends React.PureComponent {
 
   changeSettings = (key, newValue) => {
     this.setState({ [key]: newValue });
-    localStorage.setItem("tictacboom:settings", JSON.stringify(this.state));
+    localStorage.setItem("tictacblast:settings", JSON.stringify(this.state));
   };
 
   componentDidMount() {
-    const storedSettings = localStorage.getItem("tictacboom:settings");
+    const storedSettings = localStorage.getItem("tictacblast:settings");
     if (storedSettings) this.setState({ ...JSON.parse(storedSettings) });
   }
 

@@ -27,7 +27,7 @@ class Interact extends PureComponent {
       imageUrl: require("../image/logo.png"),
       imageWidth: 200,
       imageHeight: 200,
-      title: "Tic Tac Boom!",
+      title: "Tic-Tac-Blast",
       text: `Copyright ${currentYear} Ilham Wahabi`,
       confirmButtonText: "Cool",
       confirmButtonColor: this.props.theme === "light" ? "#2196f3" : "#263238",
@@ -37,7 +37,7 @@ class Interact extends PureComponent {
             this.props.theme === "light" ? "light" : "dark"
           }`}
           rel="noopener noreferrer"
-          href="https://github.com/iwgx/tictac-boom"
+          href="https://github.com/iwgx/tictac-blast"
           target="_blank"
         >
           See this project on &nbsp; <IoLogoGithub />
