@@ -37,7 +37,7 @@ class Interact extends PureComponent {
             this.props.theme === "light" ? "light" : "dark"
           }`}
           rel="noopener noreferrer"
-          href="https://github.com/iwgx/tictac-blast"
+          href="https://github.com/ilhamwahabi/tictactie"
           target="_blank"
         >
           See this project on &nbsp; <IoLogoGithub />
