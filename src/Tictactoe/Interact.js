@@ -21,14 +21,12 @@ class Interact extends PureComponent {
   theme = createRef();
 
   openAboutSwal = () => {
-    const currentYear = new Date().getFullYear();
-
     Alert.fire({
       imageUrl: require("../image/logo.png"),
       imageWidth: 200,
       imageHeight: 200,
-      title: "Tic-Tac-Blast",
-      text: `Copyright ${currentYear} Ilham Wahabi`,
+      title: "Tic-Tac-Tie",
+      text: `Copyright 2018 Ilham Wahabi`,
       confirmButtonText: "Cool",
       confirmButtonColor: this.props.theme === "light" ? "#2196f3" : "#263238",
       footer: (
