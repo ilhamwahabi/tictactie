@@ -207,11 +207,31 @@ class Board extends PureComponent {
       }
     }
 
-    let i = parseInt(
-      notCheckedBoxIndexes[
-        Math.floor(Math.random() * notCheckedBoxIndexes.length)
-      ]
+    // Win strategy, source: https://www.wikihow.com/Win-at-Tic-Tac-Toe
+    let i;
+    const cornerIndexes = notCheckedBoxIndexes.filter(
+      (index) => index == 1 || index == 3 || index == 7 || index == 9
     );
+
+    // 1. Always choose the center
+    if (notCheckedBoxIndexes.includes(5)) {
+      i = 5;
+    } else if (cornerIndexes.length > 1 && this.props.turn <= 2) {
+      // 2. If center already filled, choose the corner
+      const cornerIndexes = notCheckedBoxIndexes.filter(
+        (index) => index == 1 || index == 3 || index == 7 || index == 9
+      );
+
+      i = parseInt(
+        cornerIndexes[Math.floor(Math.random() * cornerIndexes.length)]
+      );
+    } else {
+      i = parseInt(
+        notCheckedBoxIndexes[
+          Math.floor(Math.random() * notCheckedBoxIndexes.length)
+        ]
+      );
+    }
 
     this.props.addTurn();
 
