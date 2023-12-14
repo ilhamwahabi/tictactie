@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment, createRef } from "react";
 import swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import ReactTooltip from "react-tooltip";
+import { Tooltip } from "react-tooltip";
 import {
   IoLogoGithub,
   IoMdHappy,
@@ -27,7 +27,7 @@ class Interact extends PureComponent {
       imageHeight: 200,
       title: "Tic-Tac-Tie",
       text: `Copyright 2018 Ilham Wahabi`,
-      confirmButtonText: "Cool",
+      confirmButtonText: "Cool!",
       confirmButtonColor: this.props.theme === "light" ? "#2196f3" : "#263238",
       footer: (
         <a
@@ -131,28 +131,24 @@ class Interact extends PureComponent {
     return (
       <Fragment>
         <div
-          data-tip
-          data-for="settings"
           className="settings-button"
           onClick={this.openSettingsSwal}
+          data-tooltip-id="interact"
+          data-tooltip-content="Settings"
+          data-tooltip-place="left"
         >
           <IoMdSettings className="button-icon" />
         </div>
         <div
-          data-tip
-          data-for="about"
           className="about-button"
           onClick={this.openAboutSwal}
+          data-tooltip-id="interact"
+          data-tooltip-content="About"
+          data-tooltip-place="right"
         >
           <IoMdHappy className="button-icon" />
         </div>
-
-        <ReactTooltip id="settings" place="right" type="dark" effect="solid">
-          Settings
-        </ReactTooltip>
-        <ReactTooltip id="about" place="left" type="dark" effect="solid">
-          About
-        </ReactTooltip>
+        <Tooltip id="interact" />
       </Fragment>
     );
   }

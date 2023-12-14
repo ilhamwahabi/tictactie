@@ -3,7 +3,7 @@
   top: 0;
   width: 125px;
   height: 125px;
-  cursor: pointer;
+  cursor: default;
 
   display: flex;
   flex-direction: row;
